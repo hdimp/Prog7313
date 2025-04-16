@@ -5,9 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Register"
-    android:background="@color/black"
-    >
+    android:background="#5B5959"
+    tools:context=".Register">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -32,18 +31,10 @@
         android:layout_marginBottom="36dp"
         android:background="#FFFFFF"
         android:ems="10"
+        android:hint="Username"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/editTextText3"
         tools:layout_editor_absoluteX="100dp" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Username"
-        android:textColor="#838080"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="268dp" />
 
     <EditText
         android:id="@+id/editTextTextPassword2"
@@ -52,6 +43,7 @@
         android:layout_marginBottom="36dp"
         android:background="#FFFFFF"
         android:ems="10"
+        android:hint="Password"
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/editTextTextPassword3"
         tools:layout_editor_absoluteX="101dp" />
@@ -62,6 +54,7 @@
         android:layout_height="wrap_content"
         android:background="#FFFFFF"
         android:ems="10"
+        android:hint="Confirm"
         android:inputType="textPassword"
         tools:layout_editor_absoluteX="100dp"
         tools:layout_editor_absoluteY="475dp" />
@@ -73,35 +66,9 @@
         android:layout_marginBottom="36dp"
         android:background="#FFFFFF"
         android:ems="10"
+        android:hint="Full Name"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/editTextTextPassword2"
         tools:layout_editor_absoluteX="100dp" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Full Name"
-        android:textColor="#838080"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="327dp" />
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Password"
-        android:textColor="#838080"
-        tools:layout_editor_absoluteX="101dp"
-        tools:layout_editor_absoluteY="387dp" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Confirm Password"
-        android:textColor="#838080"
-        tools:layout_editor_absoluteX="101dp"
-        tools:layout_editor_absoluteY="449dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

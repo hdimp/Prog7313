@@ -1,0 +1,105 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/settingsRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1C1B29"
+    android:orientation="vertical"
+    tools:context=".SettingsActivity">
+
+    <!-- Header with Back Arrow and Title -->
+    <LinearLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:background="#4B3F72"
+        android:gravity="center_vertical">
+
+        <!-- Back Arrow -->
+        <TextView
+            android:id="@+id/backArrow"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="←"
+            android:textSize="24sp"
+            android:textColor="#FFFFFF"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="8dp" />
+
+        <!-- Settings Title -->
+        <TextView
+            android:id="@+id/tvHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Settings"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center_vertical" />
+    </LinearLayout>
+
+
+    <!-- Settings List -->
+    <LinearLayout
+        android:id="@+id/settingsList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="30dp"
+        android:layout_marginHorizontal="30dp"
+        android:orientation="vertical"
+        android:background="#2D2B47"
+        android:padding="20dp"
+        android:gravity="center_vertical">
+
+        <TextView style="@style/SettingItem" android:text="Customize Home" />
+        <TextView style="@style/SettingItem" android:text="Privacy" />
+        <TextView style="@style/SettingItem" android:text="Notification" />
+        <TextView style="@style/SettingItem" android:text="Appearance" />
+        <TextView style="@style/SettingItem" android:text="Help" />
+        <TextView style="@style/SettingItem" android:text="Home" />
+        <TextView style="@style/SettingItem" android:text="Timeline" />
+        <TextView style="@style/SettingItem" android:text="Upload Document" />
+
+        <!-- Logout -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="12dp"
+            android:paddingHorizontal="16dp"
+            android:text="Log out"
+            android:textColor="#FFFFFF"
+            android:background="#6A5ACD"
+            android:layout_marginTop="10dp" />
+    </LinearLayout>
+
+    <!-- Bottom Navigation -->
+    <LinearLayout
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="#3E3A61"
+        android:gravity="center">
+
+        <TextView
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="🏠 Home"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="📅 Timeline"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="⚙️ Settings"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,11 +1,207 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/homeRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomepageActivity"
-    android:background="@color/black">
+    android:orientation="vertical"
+    android:background="#1C1B29"
+    tools:context=".HomeActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="#4B3F72"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvBalance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Balance"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date to be coded"
+            android:textColor="#D3D3D3"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <!-- Card Section -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#2D2B47"
+        android:padding="16dp"
+        android:layout_margin="16dp"
+        android:gravity="center_vertical">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:text="Default"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvBalanceAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Code to add from income"
+                android:textSize="22sp"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Plus Button -->
+        <Button
+            android:id="@+id/btnAddTransaction"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="#6A5ACD"
+            android:elevation="6dp"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:text="+"
+            android:textColor="#FFFFFF"
+            android:textSize="28sp" />
+
+    </LinearLayout>
+
+    <!-- Budget Summary -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="8dp"
+        android:gravity="center">
+
+        <TextView
+            android:text="Expenses\nR 2,640.00"
+            android:textColor="#FFFFFF"
+            android:layout_weight="1"
+            android:textSize="14sp" />
+
+        <TextView
+            android:text="Income\nR 20,000.00"
+            android:textColor="#FFFFFF"
+            android:layout_weight="1"
+            android:textAlignment="textEnd"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <!-- Progress Bar (Custom Look with View) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:text="Remaining Budget"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+
+        <TextView
+            android:text="R 18,683.00 out of R 20,000.00"
+            android:textColor="#D3D3D3"
+            android:textSize="12sp"
+            android:paddingBottom="8dp" />
+
+        <!-- The progress bar needs to be coded so it automatically updates -->
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="12dp"
+            android:progress="0"
+            android:max="100"
+            android:progressTint="#00FF66"
+            android:backgroundTint="#000000"
+            android:indeterminate="false" />
+    </LinearLayout>
+
+    <!-- Expenses Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="8dp">
+
+        <TextView
+            android:text="Expenses:"
+            android:textColor="#FFFFFF"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:text="View All:"
+            android:textColor="#AAAAFF"
+            android:textSize="14sp"
+            android:textStyle="italic" />
+    </LinearLayout>
+
+    <!-- Expense Items -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp">
+
+        <TextView
+            android:text=""
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:paddingVertical="6dp" />
+
+        <TextView
+            android:text=""
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:paddingVertical="6dp" />
+    </LinearLayout>
+
+    <!-- Bottom Navigation -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="#3E3A61"
+        android:gravity="center"
+        android:layout_gravity="bottom">
+
+        <TextView
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="🏠 Home"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="📅 Timeline"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="⚙️ Settings"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+</LinearLayout>
