@@ -1,75 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/loginRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login"
-    android:background="@color/black">
+    android:background="#1C1B29"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:padding="24dp"
+    tools:context=".Login">
 
+    <!-- Logo/Image -->
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="413dp"
-        android:layout_height="265dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/piggyplan_removebg_preview" />
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:layout_marginBottom="24dp"
+        android:src="@drawable/piggyplan_removebg_preview" />
 
+    <!-- Username Input -->
     <EditText
-        android:id="@+id/editTextText2"
-        android:layout_width="208dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="101dp"
-        android:layout_marginEnd="101dp"
-        android:layout_marginBottom="52dp"
-        android:background="#FFFF"
-        android:ems="10"
+        android:id="@+id/txtUsername"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#4B3F72"
+        android:hint="Username"
         android:inputType="text"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textColor="#FFFFFF"
+        android:textColorHint="#D3D3D3" />
 
+    <!-- Password Input -->
     <EditText
-        android:id="@+id/editTextTextPassword"
-        android:layout_width="212dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="101dp"
-        android:layout_marginEnd="101dp"
-        android:background="#FFFF"
-        android:ems="10"
+        android:id="@+id/txtPassword"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="#4B3F72"
+        android:hint="Password"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="403dp" />
+        android:textColor="#FFFFFF"
+        android:textColorHint="#D3D3D3" />
 
+    <!-- Login Button -->
     <Button
         android:id="@+id/btnLog"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
         android:text="Login"
-        tools:layout_editor_absoluteX="160dp"
-        tools:layout_editor_absoluteY="497dp" />
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#6A5ACD" />
 
-    <TextView
-        android:id="@+id/txtUsername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Username"
-        android:textColor="#736868"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="293dp" />
-
-    <TextView
-        android:id="@+id/txtPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Password"
-        android:textColor="#736868"
-        tools:layout_editor_absoluteX="98dp"
-        tools:layout_editor_absoluteY="384dp" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

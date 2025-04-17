@@ -1,46 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@color/black">
+    android:orientation="vertical"
+    android:background="#1C1B29"
+    android:gravity="center_horizontal"
+    android:padding="24dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
 
+    <!-- Logo/Image -->
     <ImageView
         android:id="@+id/ImgPlan"
-        android:layout_width="412dp"
-        android:layout_height="271dp"
-        android:layout_marginTop="2dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/piggyplan_removebg_preview" />
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="32dp"
+        android:src="@drawable/piggyplan_removebg_preview" />
 
+    <!-- Login Button -->
     <Button
         android:id="@+id/btnLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="161dp"
-        android:layout_marginEnd="162dp"
-        android:layout_marginBottom="34dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="16dp"
         android:text="Login"
-        app:layout_constraintBottom_toTopOf="@+id/btnCreateAccount"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#6A5ACD" />
 
+    <!-- Create Account Button -->
     <Button
         android:id="@+id/btnCreateAccount"
-        android:layout_width="104dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="161dp"
-        android:layout_marginEnd="162dp"
-        android:layout_marginBottom="228dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:backgroundTint="#6A5ACD"
         android:text="Create Account"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.538"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textColor="#FFFFFF" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
