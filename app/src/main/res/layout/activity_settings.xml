@@ -68,7 +68,7 @@
 
     </LinearLayout>
 
-    <!-- New Navigation Bar -->
+    <!-- Navigation Bar -->
     <LinearLayout
         android:id="@+id/navigationBar"
         android:layout_width="match_parent"
