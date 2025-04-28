@@ -76,6 +76,7 @@
                         android:layout_marginEnd="16dp" />
 
                     <TextView
+                        android:id="@+id/tvHousing"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -104,6 +105,7 @@
                         android:layout_marginEnd="16dp" />
 
                     <TextView
+                        android:id="@+id/tvHealthCare"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -133,6 +135,7 @@
                         android:layout_marginEnd="16dp" />
 
                     <TextView
+                        android:id="@+id/tvTakeOut"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -162,6 +165,7 @@
                         android:layout_marginEnd="16dp" />
 
                     <TextView
+                        android:id="@+id/tvGroceries"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -191,6 +195,7 @@
                         android:layout_marginEnd="16dp" />
 
                     <TextView
+                        android:id="@+id/tvTransportation"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -220,6 +225,7 @@
                         android:layout_marginEnd="16dp" />
 
                     <TextView
+                        android:id="@+id/tvUtilities"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -249,6 +255,7 @@
                         android:layout_marginEnd="16dp" />
 
                     <TextView
+                        android:id="@+id/tvEntertainment"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -276,17 +283,18 @@
                     android:id="@+id/categorySalary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:padding="8dp"
-                    android:gravity="center_vertical">
+                    android:padding="8dp">
 
                     <ImageView
                         android:layout_width="32dp"
                         android:layout_height="32dp"
-                        android:src="@drawable/ic_salary"
-                        android:layout_marginEnd="16dp" />
+                        android:layout_marginEnd="16dp"
+                        android:src="@drawable/ic_salary" />
 
                     <TextView
+                        android:id="@+id/tvSalary"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -305,17 +313,18 @@
                     android:id="@+id/categoryLoan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:padding="8dp"
-                    android:gravity="center_vertical">
+                    android:padding="8dp">
 
                     <ImageView
                         android:layout_width="32dp"
                         android:layout_height="32dp"
-                        android:src="@drawable/ic_loan"
-                        android:layout_marginEnd="16dp" />
+                        android:layout_marginEnd="16dp"
+                        android:src="@drawable/ic_loan" />
 
                     <TextView
+                        android:id="@+id/tvLoan"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -334,17 +343,18 @@
                     android:id="@+id/categoryGift"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:padding="8dp"
-                    android:gravity="center_vertical">
+                    android:padding="8dp">
 
                     <ImageView
                         android:layout_width="32dp"
                         android:layout_height="32dp"
-                        android:src="@drawable/ic_gift"
-                        android:layout_marginEnd="16dp" />
+                        android:layout_marginEnd="16dp"
+                        android:src="@drawable/ic_gift" />
 
                     <TextView
+                        android:id="@+id/tvGift"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"

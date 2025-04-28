@@ -4,18 +4,51 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.Observer
 
 class Login : AppCompatActivity() {
+
+    private lateinit var userViewModel: UserViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        val btnLog = findViewById<Button>(R.id.btnLog)
+        val database = AppDatabase.getDatabase(this)
+        val userDao = database.userDao()
+        val repository = UserRepository(userDao)
+        userViewModel = ViewModelProvider(this, UserViewModelFactory(repository)).get(UserViewModel::class.java)
 
-        // Handle Login button click
-        btnLog.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)  // Navigate to MainActivity or Dashboard
-            startActivity(intent)
+        val editTextUsername = findViewById<EditText>(R.id.txtUsername)
+        val editTextPassword = findViewById<EditText>(R.id.txtPassword)
+        val buttonLogin = findViewById<Button>(R.id.btnLog)
+
+        buttonLogin.setOnClickListener {
+            val username = editTextUsername.text.toString().trim()
+            val password = editTextPassword.text.toString().trim()
+
+            if (username.isNotEmpty() && password.isNotEmpty()) {
+                userViewModel.getUserByUsername(username).observe(this, Observer { user ->
+                    if (user != null) {
+                        if (user.password == password) {
+                            Toast.makeText(this, "Login Successful!", Toast.LENGTH_SHORT).show()
+
+                            val intent = Intent(this, HomepageActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        } else {
+                            Toast.makeText(this, "Incorrect Password!", Toast.LENGTH_SHORT).show()
+                        }
+                    } else {
+                        Toast.makeText(this, "User not found!", Toast.LENGTH_SHORT).show()
+                    }
+                })
+            } else {
+                Toast.makeText(this, "Please fill in all fields!", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }

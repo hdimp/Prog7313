@@ -22,7 +22,7 @@
             android:name=".CategoryActivity"
             android:exported="false" />
         <activity
-            android:name=".Transcations"
+            android:name=".Transactions"
             android:exported="false" />
         <activity
             android:name=".Settings"
