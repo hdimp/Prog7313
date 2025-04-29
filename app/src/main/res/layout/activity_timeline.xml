@@ -47,6 +47,35 @@
         android:textColor="@color/white"
         android:textSize="16sp" />
 
+    <!-- Selected Date Display with Icon -->
+    <LinearLayout
+        android:id="@+id/selectedDateDisplayLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/selectedDateText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal|center_vertical">
+
+        <ImageView
+            android:id="@+id/calendarIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/ic_calender"
+            android:contentDescription="Calendar Icon" />
+
+        <TextView
+            android:id="@+id/selectedDateValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No date selected"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+
     <!-- Bottom Navigation Bar -->
     <LinearLayout
         android:id="@+id/navigationBar"
