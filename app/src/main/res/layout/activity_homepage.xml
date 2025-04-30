@@ -29,7 +29,6 @@
             android:id="@+id/tvDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Date to be coded"
             android:textColor="#D3D3D3"
             android:textSize="14sp" />
     </LinearLayout>
@@ -201,15 +200,39 @@
         </LinearLayout>
 
         <!-- Progress bar -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+
         <ProgressBar
+            android:id="@+id/progressBar"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
-            android:layout_height="12dp"
-            android:progress="0"
+            android:layout_height="match_parent"
+            android:indeterminate="false"
             android:max="100"
-            android:progressTint="#00FF66"
-            android:backgroundTint="#000000"
-            android:indeterminate="false" />
+            android:progress="0"
+            android:progressDrawable="@drawable/custom_progress_bar" />
+
+            <View
+                android:id="@+id/mindGoalLine"
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:background="#3498DB"
+                android:visibility="invisible" />
+
+            <View
+                android:id="@+id/maxGoalLine"
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:background="#00FF00"
+                android:visibility="invisible" />
+
+        </FrameLayout>
     </LinearLayout>
 
     <!-- Expenses Header -->
@@ -246,10 +269,9 @@
             android:id="@+id/tvtransactionalItems"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Here Shaun add it here. Unless you want something different. Its called tvExpenseItem"
+            android:paddingVertical="6dp"
             android:textColor="#FFFFFF"
-            android:textSize="14sp"
-            android:paddingVertical="6dp" />
+            android:textSize="14sp" />
     </LinearLayout>
 
 

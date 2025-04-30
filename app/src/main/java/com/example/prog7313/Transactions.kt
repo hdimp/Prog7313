@@ -27,12 +27,27 @@ class Transactions : AppCompatActivity() {
     private lateinit var uploadPhotoButton: TextView
     private var selectedImageUri: Uri? = null
 
+    private var selectedFrequency: String? = null
+    private var startTimestamp: Long? = null
+    private var endTimestamp: Long? = null
+
+    private val recurringActivityLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            val data = result.data
+            selectedFrequency = data?.getStringExtra("frequency")
+            startTimestamp = data?.getLongExtra("startTimestamp", -1L)?.takeIf { it > 0}
+            endTimestamp = data?.getLongExtra("endTimestamp", -1L)?.takeIf { it > 0}
+        }
+    }
+
     private val categoryActivityLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
             val data = result.data
-            val selectedCategory = data?.getStringExtra("selectedCategory")
+            selectedCategory = data?.getStringExtra("selectedCategory") ?: ""
 
             selectedCategory?.let {
                 textViewSelectCategory.text = it
@@ -91,6 +106,25 @@ class Transactions : AppCompatActivity() {
             photoActivityLauncher.launch(intent)
         }
 
+        val tvRecurring = findViewById<TextView>(R.id.tvRecurring)
+        var isRecurring = false
+
+        tvRecurring.setOnClickListener {
+            isRecurring = !isRecurring
+            tvRecurring.setBackgroundResource(
+                if (isRecurring) R.drawable.button_rounded_selected else R.drawable.button_rounded_dark
+            )
+
+            if (isRecurring) {
+                val intent = Intent(this, Recurring::class.java)
+                recurringActivityLauncher.launch(intent)
+            } else {
+                selectedFrequency = null
+                startTimestamp = null
+                endTimestamp = null
+            }
+        }
+
         buttonSubmit.setOnClickListener {
             val transactionType = when {
                 radioIncome.isChecked -> "Income"
@@ -101,18 +135,24 @@ class Transactions : AppCompatActivity() {
             if (transactionType.isNotEmpty()) {
                 val amount = editTextAmount.text.toString().toDoubleOrNull()
                 val notes = editTextNotes.text.toString()
-                val currentDate = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(Date())
-                val currentTime = SimpleDateFormat("hh:mm a", Locale.getDefault()).format(Date())
+
+                if (isRecurring && (startTimestamp == null || endTimestamp == null || startTimestamp!! >= endTimestamp!!)) {
+                    Toast.makeText(this, "Invalid recurring dates selected.", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
 
                 if (amount != null) {
                     val transactionData = TransactionData(
                         transactionType = transactionType,
-                        date = currentDate,
-                        time = currentTime,
+                        recurring = isRecurring,
+                        frequency = selectedFrequency,
+                        startTimestamp = startTimestamp,
+                        endTimestamp = endTimestamp,
+                        timestamp = if (isRecurring) startTimestamp ?: System.currentTimeMillis() else System.currentTimeMillis(),
                         amount = amount,
                         notes = notes,
                         category = selectedCategory,
-                        imageUrl = selectedImageUri.toString()
+                        imageUrl = selectedImageUri.toString() ?: ""
                     )
 
                     transactionViewModel.insertTransaction(transactionData)

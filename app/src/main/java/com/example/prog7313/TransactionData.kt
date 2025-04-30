@@ -8,10 +8,13 @@ data class TransactionData (
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
     val transactionType: String,
-    val date: String,
-    val time: String,
+    val recurring: Boolean,
+    val frequency: String?,
+    val startTimestamp: Long?,
+    val endTimestamp: Long?,
     val amount: Double,
     val notes: String?,
     val category: String,
-    val imageUrl: String?
+    val imageUrl: String?,
+    val timestamp: Long
 )

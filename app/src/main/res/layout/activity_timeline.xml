@@ -75,6 +75,34 @@
             android:textSize="16sp" />
     </LinearLayout>
 
+    <!-- Scrollable Content Display -->
+    <ScrollView
+        android:id="@+id/scrollViewContent"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@id/selectedDateDisplayLayout"
+        android:layout_above="@id/navigationBar"
+        android:layout_marginTop="8dp"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/dateContentLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <!-- Example dynamic content -->
+            <TextView
+                android:id="@+id/transactionsTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Here is where your date-specific data will appear..."
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:padding="4dp" />
+        </LinearLayout>
+    </ScrollView>
 
     <!-- Bottom Navigation Bar -->
     <LinearLayout
@@ -146,5 +174,6 @@
                 android:textSize="12sp" />
         </LinearLayout>
     </LinearLayout>
+
 
 </RelativeLayout>

@@ -2,7 +2,9 @@ package com.example.prog7313
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -16,6 +18,14 @@ class Settings : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_settings)
         setupNavigation()
+
+        val tvCreateCategory = findViewById<TextView>(R.id.settingCreateCategory)
+
+        tvCreateCategory.setOnClickListener {
+            val intent = Intent(this, CreateCategory::class.java)
+            startActivity(intent)
+        }
+
         }
 
     private fun setupNavigation() {

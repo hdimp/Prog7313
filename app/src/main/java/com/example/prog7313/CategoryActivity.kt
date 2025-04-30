@@ -12,12 +12,16 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import org.w3c.dom.Text
 import android.content.Intent
+import android.graphics.Color
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.Observer
 
 class CategoryActivity : AppCompatActivity() {
 
     private lateinit var expenseContainer: LinearLayout
     private lateinit var incomeContainer: LinearLayout
     private lateinit var selectedCategory: String
+    private lateinit var categoryViewModel: UserCategoryViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +40,26 @@ class CategoryActivity : AppCompatActivity() {
             expenseContainer.visibility = View.VISIBLE
             incomeContainer.visibility = View.GONE
         }
+
+        categoryViewModel = ViewModelProvider(this).get(UserCategoryViewModel::class.java)
+
+        categoryViewModel.loadCategories(transactionType)
+
+        categoryViewModel.categories.observe(this, Observer<List<UserCategoryData>> { customCategories ->
+            customCategories?.forEach { category ->
+                val tv = TextView(this).apply {
+                    text = category.name
+                    textSize = 16f
+                    setTextColor(Color.WHITE)
+                    setOnClickListener {
+                        selectCategory(category.name)
+                    }
+                }
+
+                if (transactionType == "Expense") expenseContainer.addView(tv)
+                else incomeContainer.addView(tv)
+            }
+        })
 
         setupCategorySelection()
 

@@ -104,7 +104,8 @@
                 android:focusable="true"
                 android:hintTextColor="#DAD1FF"
                 android:padding="16dp"
-                android:text="Select Category"
+                android:text="--Select Category--"
+                android:textAlignment="center"
                 android:textColor="#FFFFFF" />
 
             <!-- Confirmation Message for Photo Upload -->
