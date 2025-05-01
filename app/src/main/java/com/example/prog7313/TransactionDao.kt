@@ -25,6 +25,4 @@ interface TransactionDao {
 
     @Query("SELECT * FROM transactions WHERE timestamp >= :startDate AND timestamp <= :endDate")
     suspend fun getTransactionsForDate(startDate: Long, endDate: Long): List<TransactionData>
-
-
 }

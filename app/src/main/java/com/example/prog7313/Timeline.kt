@@ -1,8 +1,10 @@
 package com.example.prog7313
 
+import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
+import android.widget.Button
 import android.widget.CalendarView
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -15,6 +17,8 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.setPadding
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.prog7313.R.anim.slide_in_right
+import com.example.prog7313.R.anim.slide_out_left
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -33,6 +37,8 @@ class Timeline : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_timeline)
 
+        setupNavigation()
+
         val database = AppDatabase.getDatabase(applicationContext)
         val transactionDao = database.transactionDao()
         val repository = TransactionRepo(transactionDao)
@@ -44,8 +50,6 @@ class Timeline : AppCompatActivity() {
         selectedDateValue = findViewById(R.id.selectedDateValue)
         selectedDateDisplayLayout = findViewById(R.id.selectedDateDisplayLayout)
         transactionsTextView = findViewById(R.id.transactionsTextView)
-
-        transactionViewModel = ViewModelProvider(this, TransactionViewModelFactory(TransactionRepo(database.transactionDao()))).get(TransactionViewModel::class.java)
 
         calendarView.setOnDateChangeListener {_, year, month, dayOfMonth ->
             val selectedDate = Calendar.getInstance().apply {
@@ -107,6 +111,28 @@ class Timeline : AppCompatActivity() {
 
                 container.addView(imageLink)
             }
+        }
+    }
+
+    private fun setupNavigation() {
+        // Find navigation elements
+        val navHome = findViewById<LinearLayout>(R.id.navHome)
+        val navSettings = findViewById<LinearLayout>(R.id.navSettings)
+
+        // Set click listeners
+        navHome.setOnClickListener {
+            val intent = Intent(this, HomepageActivity::class.java)
+            startActivity(intent)
+            // https://www.geeksforgeeks.org/how-to-add-slide-animation-between-activities-in-android/
+            overridePendingTransition(slide_in_right, slide_out_left)
+        }
+
+        navSettings.setOnClickListener {
+            // Navigate to Settings Activity
+            val intent = Intent(this, Settings::class.java)
+            startActivity(intent)
+            // https://www.geeksforgeeks.org/how-to-add-slide-animation-between-activities-in-android/
+            overridePendingTransition(slide_in_right, slide_out_left)
         }
     }
 }

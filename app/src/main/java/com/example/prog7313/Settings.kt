@@ -26,13 +26,13 @@ class Settings : AppCompatActivity() {
             startActivity(intent)
         }
 
-        }
+    }
 
     private fun setupNavigation() {
         // Find navigation elements
         val navHome = findViewById<LinearLayout>(R.id.navHome)
         val navTimeline = findViewById<LinearLayout>(R.id.navTimeline)
-        val navSettings = findViewById<LinearLayout>(R.id.navSettings)
+
         // Set click listeners
         navHome.setOnClickListener {
             val intent = Intent(this, HomepageActivity::class.java)
@@ -47,10 +47,6 @@ class Settings : AppCompatActivity() {
             startActivity(intent)
             // https://www.geeksforgeeks.org/how-to-add-slide-animation-between-activities-in-android/
             overridePendingTransition(slide_in_right, slide_out_left)
-        }
-
-        navSettings.setOnClickListener {
-            recreate()
         }
     }
 }

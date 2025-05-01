@@ -87,7 +87,7 @@
                     <ImageView
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:src="@drawable/ic_check" />
+                         />
                 </LinearLayout>
 
                 <!-- Healthcare Category -->
@@ -117,7 +117,7 @@
                     <ImageView
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:src="@drawable/ic_check" />
+                         />
                 </LinearLayout>
 
                 <!-- Takeout Category -->
@@ -147,7 +147,7 @@
                     <ImageView
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:src="@drawable/ic_check" />
+                         />
                 </LinearLayout>
 
                 <!-- Groceries Category -->
@@ -177,7 +177,7 @@
                     <ImageView
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:src="@drawable/ic_check" />
+                         />
                 </LinearLayout>
 
                 <!-- Transportation Category -->
@@ -207,7 +207,7 @@
                     <ImageView
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:src="@drawable/ic_check" />
+                         />
                 </LinearLayout>
 
                 <!-- Utilities Category -->
@@ -237,7 +237,7 @@
                     <ImageView
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:src="@drawable/ic_check" />
+                         />
                 </LinearLayout>
 
                 <!-- Entertainment Category -->
@@ -267,7 +267,7 @@
                     <ImageView
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:src="@drawable/ic_check" />
+                         />
                 </LinearLayout>
             </LinearLayout>
 
@@ -306,7 +306,7 @@
                     <ImageView
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:src="@drawable/ic_check" />
+                         />
                 </LinearLayout>
 
                 <!-- Loan Category -->
@@ -336,7 +336,7 @@
                     <ImageView
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:src="@drawable/ic_check" />
+                         />
                 </LinearLayout>
 
                 <!-- Gift Category -->
@@ -366,7 +366,7 @@
                     <ImageView
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:src="@drawable/ic_check" />
+                         />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

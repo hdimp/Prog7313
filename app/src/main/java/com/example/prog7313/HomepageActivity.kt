@@ -23,6 +23,7 @@ import kotlin.math.max
 import androidx.core.widget.addTextChangedListener
 import kotlin.math.roundToInt
 
+
 class HomepageActivity : AppCompatActivity() {
 
     private lateinit var transactionViewModel: TransactionViewModel
@@ -46,6 +47,7 @@ class HomepageActivity : AppCompatActivity() {
         // Total Balance
 
         val viewModel = ViewModelProvider(this)[HomePageViewModel::class.java]
+
         tvTotalBalance = findViewById(R.id.tvBalance)
 
         viewModel.balanceLiveData.observe(this) { balance ->
@@ -128,7 +130,10 @@ class HomepageActivity : AppCompatActivity() {
 
         tvTransactionalItems = findViewById(R.id.tvtransactionalItems)
 
-        transactionViewModel = ViewModelProvider(this).get(TransactionViewModel::class.java)
+        val dao = AppDatabase.getDatabase(application).transactionDao()
+        val repository = TransactionRepo(dao)
+        val factory = TransactionViewModelFactory(repository)
+        transactionViewModel = ViewModelProvider(this, factory)[TransactionViewModel::class.java]
 
         transactionViewModel.getTotalSpentByCategory().observe(this, Observer { categoryTotals ->
 
@@ -186,15 +191,11 @@ class HomepageActivity : AppCompatActivity() {
 
     private fun setupNavigation() {
         // Find navigation elements
-        val navHome = findViewById<LinearLayout>(R.id.navHome)
         val navTimeline = findViewById<LinearLayout>(R.id.navTimeline)
         val navSettings = findViewById<LinearLayout>(R.id.navSettings)
         val buttonAddTransaction = findViewById<Button>(R.id.btnAddTransaction)
+
         // Set click listeners
-        navHome.setOnClickListener {
-            // No navigation needed if we're already on the homepage
-            recreate()
-        }
 
         navTimeline.setOnClickListener {
             // Navigate to Timeline Activity

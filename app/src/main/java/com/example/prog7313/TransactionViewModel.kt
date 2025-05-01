@@ -27,15 +27,14 @@ class TransactionViewModel(private val repository: TransactionRepo) : ViewModel(
     }
 
     fun getTransactionsForDate(selectedDateTimestamp: Long) = liveData(Dispatchers.IO) {
-        val startOfDay = selectedDateTimestamp
-        val endOfDay = startOfDay + 24 * 60 * 60 * 1000 - 1
-        emit(repository.getTransactionsForDate(startOfDay, endOfDay))
+        emit(repository.getTransactionsForDate(selectedDateTimestamp))
     }
 }
 
 class TransactionViewModelFactory(private val repository: TransactionRepo) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(TransactionViewModel::class.java)) {
+            @Suppress("UNCHECKED_CAST")
             return TransactionViewModel(repository) as T
         } else {
             throw IllegalArgumentException("Unknown ViewModel Class")

@@ -148,12 +148,14 @@
         android:padding="20dp">
 
         <TextView
-            android:text="Remaining Budget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:textColor="#FFFFFF"
             android:textSize="14sp" />
 
         <TextView
-            android:text="R 18,683.00 out of R 20,000.00"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:textColor="#D3D3D3"
             android:textSize="12sp"
             android:paddingBottom="8dp" />
@@ -181,7 +183,7 @@
                 android:inputType="numberDecimal"
                 android:background="@drawable/input_background"
                 android:textColor="#FFFFFF"
-                android:hintTextColor="#DAD1FF"
+                android:textColorHint="#DAD1FF"
                 android:padding="16dp"
                 android:layout_marginEnd="8dp" />
 
@@ -194,7 +196,7 @@
                 android:inputType="numberDecimal"
                 android:background="@drawable/input_background"
                 android:textColor="#FFFFFF"
-                android:hintTextColor="#DAD1FF"
+                android:textColorHint="#DAD1FF"
                 android:padding="16dp"
                 android:layout_marginStart="8dp" />
         </LinearLayout>
@@ -244,6 +246,8 @@
         android:paddingVertical="8dp">
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Expenses:"
             android:textColor="#FFFFFF"
             android:layout_weight="1"
@@ -251,6 +255,8 @@
             android:textStyle="bold" />
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="View All:"
             android:textColor="#AAAAFF"
             android:textSize="14sp"

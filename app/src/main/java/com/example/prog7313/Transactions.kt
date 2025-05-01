@@ -12,8 +12,11 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.RadioButton
 import androidx.activity.result.contract.ActivityResultContracts
+import com.example.prog7313.R.anim.slide_in_right
+import com.example.prog7313.R.anim.slide_out_left
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -69,6 +72,8 @@ class Transactions : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_transactions)
+
+        setupNavigation()
 
         val database = AppDatabase.getDatabase(this)
         val transactionDao = database.transactionDao()
@@ -167,6 +172,37 @@ class Transactions : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "Please select a transaction type!", Toast.LENGTH_SHORT).show()
             }
+        }
+    }
+
+    private fun setupNavigation() {
+        // Find navigation elements
+        val navHome = findViewById<LinearLayout>(R.id.navHome)
+        val navTimeline = findViewById<LinearLayout>(R.id.navTimeline)
+        val navSettings = findViewById<LinearLayout>(R.id.navSettings)
+
+        // Set click listeners
+        navHome.setOnClickListener {
+            val intent = Intent(this, HomepageActivity::class.java)
+            startActivity(intent)
+            // https://www.geeksforgeeks.org/how-to-add-slide-animation-between-activities-in-android/
+            overridePendingTransition(slide_in_right, slide_out_left)
+        }
+
+        navTimeline.setOnClickListener {
+            // Navigate to Timeline Activity
+            val intent = Intent(this, Timeline::class.java)
+            startActivity(intent)
+            // https://www.geeksforgeeks.org/how-to-add-slide-animation-between-activities-in-android/
+            overridePendingTransition(slide_in_right, slide_out_left)
+        }
+
+        navSettings.setOnClickListener {
+            // Navigate to Settings Activity
+            val intent = Intent(this, Settings::class.java)
+            startActivity(intent)
+            // https://www.geeksforgeeks.org/how-to-add-slide-animation-between-activities-in-android/
+            overridePendingTransition(slide_in_right, slide_out_left)
         }
     }
 }
