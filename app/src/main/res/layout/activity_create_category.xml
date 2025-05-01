@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     android:background="#1C1B29"
     android:orientation="vertical"
-    android:padding="24dp"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".CreateCategory">
 
@@ -62,9 +61,18 @@
             android:hint="Enter category name"
             android:textColor="#FFFFFF"
             android:textColorHint="#AAAAAA"
-            android:background="@drawable/edit_text_background"
             android:padding="12dp"
             android:layout_marginBottom="24dp" />
+
+        <!-- Edit Categories Button -->
+        <Button
+            android:id="@+id/btnEditCategories"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Edit Categories"
+            android:backgroundTint="#6A5ACD"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/button_rounded_dark" />
 
         <!-- Submit Button -->
         <Button
@@ -81,11 +89,13 @@
         android:id="@+id/navigationBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:background="#3D2A63"
         android:orientation="horizontal"
         android:padding="8dp">
 
         <LinearLayout
+            android:id="@+id/navHome"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -106,6 +116,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/navTimeline"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -126,6 +137,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/navSettings"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -145,4 +157,5 @@
                 android:textSize="12sp" />
         </LinearLayout>
     </LinearLayout>
+
 </LinearLayout>

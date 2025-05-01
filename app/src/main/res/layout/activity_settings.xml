@@ -51,24 +51,9 @@
                 android:text="Home" />
 
             <TextView
-                android:id="@+id/settingCustomizeHome"
-                style="@style/SettingItem"
-                android:text="Customize Home" />
-
-            <TextView
                 android:id="@+id/settingPrivacy"
                 style="@style/SettingItem"
                 android:text="Privacy" />
-
-            <TextView
-                android:id="@+id/settingNotification"
-                style="@style/SettingItem"
-                android:text="Notification" />
-
-            <TextView
-                android:id="@+id/settingAppearance"
-                style="@style/SettingItem"
-                android:text="Appearance" />
 
             <TextView
                 android:id="@+id/settingHelp"
@@ -84,11 +69,6 @@
                 android:id="@+id/settingTimeline"
                 style="@style/SettingItem"
                 android:text="Timeline" />
-
-            <TextView
-                android:id="@+id/settingUploadDocument"
-                style="@style/SettingItem"
-                android:text="Upload Document" />
 
             <!-- Logout -->
             <TextView
@@ -115,6 +95,7 @@
         android:padding="8dp">
 
         <LinearLayout
+            android:id="@+id/navHome"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -135,6 +116,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/navTimeline"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -155,6 +137,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/navSettings"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

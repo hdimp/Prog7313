@@ -65,15 +65,15 @@
                     android:id="@+id/categoryHousing"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:padding="8dp"
-                    android:gravity="center_vertical">
+                    android:padding="8dp">
 
                     <ImageView
                         android:layout_width="32dp"
                         android:layout_height="32dp"
-                        android:src="@drawable/ic_housing"
-                        android:layout_marginEnd="16dp" />
+                        android:layout_marginEnd="16dp"
+                        android:src="@drawable/ic_housing" />
 
                     <TextView
                         android:id="@+id/tvHousing"
@@ -84,13 +84,6 @@
                         android:textColor="#FFFFFF"
                         android:textSize="16sp" />
 
-                    <RadioButton
-                        android:id="@+id/rbHousing"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:buttonTint="#FFFFFF"
-                        android:textColor="#FFFFFF"
-                        android:layout_marginStart="8dp"/>
                 </LinearLayout>
 
                 <!-- Healthcare Category -->
@@ -98,15 +91,15 @@
                     android:id="@+id/categoryHealthcare"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:padding="8dp"
-                    android:gravity="center_vertical">
+                    android:padding="8dp">
 
                     <ImageView
                         android:layout_width="32dp"
                         android:layout_height="32dp"
-                        android:src="@drawable/ic_healthcare"
-                        android:layout_marginEnd="16dp" />
+                        android:layout_marginEnd="16dp"
+                        android:src="@drawable/ic_healthcare" />
 
                     <TextView
                         android:id="@+id/tvHealthCare"
@@ -117,13 +110,6 @@
                         android:textColor="#FFFFFF"
                         android:textSize="16sp" />
 
-                    <RadioButton
-                        android:id="@+id/rbHealthcare"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:buttonTint="#FFFFFF"
-                        android:textColor="#FFFFFF"
-                        android:layout_marginStart="8dp"/>
                 </LinearLayout>
 
                 <!-- Takeout Category -->
@@ -131,15 +117,15 @@
                     android:id="@+id/categoryTakeout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:padding="8dp"
-                    android:gravity="center_vertical">
+                    android:padding="8dp">
 
                     <ImageView
                         android:layout_width="32dp"
                         android:layout_height="32dp"
-                        android:src="@drawable/ic_takeout"
-                        android:layout_marginEnd="16dp" />
+                        android:layout_marginEnd="16dp"
+                        android:src="@drawable/ic_takeout" />
 
                     <TextView
                         android:id="@+id/tvTakeOut"
@@ -150,13 +136,6 @@
                         android:textColor="#FFFFFF"
                         android:textSize="16sp" />
 
-                    <RadioButton
-                        android:id="@+id/rbTakeout"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:buttonTint="#FFFFFF"
-                        android:textColor="#FFFFFF"
-                        android:layout_marginStart="8dp"/>
                 </LinearLayout>
 
                 <!-- Groceries Category -->
@@ -164,15 +143,15 @@
                     android:id="@+id/categoryGroceries"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:padding="8dp"
-                    android:gravity="center_vertical">
+                    android:padding="8dp">
 
                     <ImageView
                         android:layout_width="32dp"
                         android:layout_height="32dp"
-                        android:src="@drawable/ic_groceries"
-                        android:layout_marginEnd="16dp" />
+                        android:layout_marginEnd="16dp"
+                        android:src="@drawable/ic_groceries" />
 
                     <TextView
                         android:id="@+id/tvGroceries"
@@ -183,13 +162,6 @@
                         android:textColor="#FFFFFF"
                         android:textSize="16sp" />
 
-                    <RadioButton
-                        android:id="@+id/rbGroceries"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:buttonTint="#FFFFFF"
-                        android:textColor="#FFFFFF"
-                        android:layout_marginStart="8dp"/>
                 </LinearLayout>
 
                 <!-- Transportation Category -->
@@ -197,15 +169,15 @@
                     android:id="@+id/categoryTransportation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:padding="8dp"
-                    android:gravity="center_vertical">
+                    android:padding="8dp">
 
                     <ImageView
                         android:layout_width="32dp"
                         android:layout_height="32dp"
-                        android:src="@drawable/ic_transportation"
-                        android:layout_marginEnd="16dp" />
+                        android:layout_marginEnd="16dp"
+                        android:src="@drawable/ic_transportation" />
 
                     <TextView
                         android:id="@+id/tvTransportation"
@@ -215,14 +187,6 @@
                         android:text="Transportation"
                         android:textColor="#FFFFFF"
                         android:textSize="16sp" />
-
-                    <RadioButton
-                        android:id="@+id/rbTransportation"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:buttonTint="#FFFFFF"
-                        android:textColor="#FFFFFF"
-                        android:layout_marginStart="8dp"/>
                 </LinearLayout>
 
                 <!-- Utilities Category -->
@@ -230,15 +194,15 @@
                     android:id="@+id/categoryUtilities"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:padding="8dp"
-                    android:gravity="center_vertical">
+                    android:padding="8dp">
 
                     <ImageView
                         android:layout_width="32dp"
                         android:layout_height="32dp"
-                        android:src="@drawable/ic_ultilities"
-                        android:layout_marginEnd="16dp" />
+                        android:layout_marginEnd="16dp"
+                        android:src="@drawable/ic_ultilities" />
 
                     <TextView
                         android:id="@+id/tvUtilities"
@@ -248,14 +212,6 @@
                         android:text="Utilities"
                         android:textColor="#FFFFFF"
                         android:textSize="16sp" />
-
-                    <RadioButton
-                        android:id="@+id/rbUtilities"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:buttonTint="#FFFFFF"
-                        android:textColor="#FFFFFF"
-                        android:layout_marginStart="8dp"/>
                 </LinearLayout>
 
                 <!-- Entertainment Category -->
@@ -263,15 +219,15 @@
                     android:id="@+id/categoryEntertainment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:padding="8dp"
-                    android:gravity="center_vertical">
+                    android:padding="8dp">
 
                     <ImageView
                         android:layout_width="32dp"
                         android:layout_height="32dp"
-                        android:src="@drawable/ic_entertainment"
-                        android:layout_marginEnd="16dp" />
+                        android:layout_marginEnd="16dp"
+                        android:src="@drawable/ic_entertainment" />
 
                     <TextView
                         android:id="@+id/tvEntertainment"
@@ -281,14 +237,6 @@
                         android:text="Entertainment"
                         android:textColor="#FFFFFF"
                         android:textSize="16sp" />
-
-                    <RadioButton
-                        android:id="@+id/rbEntertainment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:buttonTint="#FFFFFF"
-                        android:textColor="#FFFFFF"
-                        android:layout_marginStart="8dp"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -323,14 +271,6 @@
                         android:text="Salary"
                         android:textColor="#FFFFFF"
                         android:textSize="16sp" />
-
-                    <RadioButton
-                        android:id="@+id/rbSalary"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:buttonTint="#FFFFFF"
-                        android:textColor="#FFFFFF"
-                        android:layout_marginStart="8dp"/>
                 </LinearLayout>
 
                 <!-- Loan Category -->
@@ -356,14 +296,6 @@
                         android:text="Loan"
                         android:textColor="#FFFFFF"
                         android:textSize="16sp" />
-
-                    <RadioButton
-                        android:id="@+id/rbLoan"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:buttonTint="#FFFFFF"
-                        android:textColor="#FFFFFF"
-                        android:layout_marginStart="8dp"/>
                 </LinearLayout>
 
                 <!-- Gift Category -->
@@ -386,30 +318,11 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Gift"
+                        android:text="Transfer"
                         android:textColor="#FFFFFF"
                         android:textSize="16sp" />
-
-                    <RadioButton
-                        android:id="@+id/rbGift"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:buttonTint="#FFFFFF"
-                        android:textColor="#FFFFFF"
-                        android:layout_marginStart="8dp"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-
-    <!-- Submit Button -->
-    <Button
-        android:id="@+id/btnSubmitCategory"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Submit"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#7B5CE1"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/rounded_button" />
 </LinearLayout>

@@ -29,7 +29,6 @@
             android:id="@+id/tvDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Date to be coded"
             android:textColor="#D3D3D3"
             android:textSize="14sp" />
     </LinearLayout>
@@ -53,7 +52,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Default"
+                android:text="Balance"
                 android:textColor="#FFFFFF"
                 android:textSize="14sp" />
 
@@ -149,12 +148,14 @@
         android:padding="20dp">
 
         <TextView
-            android:text="Remaining Budget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:textColor="#FFFFFF"
             android:textSize="14sp" />
 
         <TextView
-            android:text="R 18,683.00 out of R 20,000.00"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:textColor="#D3D3D3"
             android:textSize="12sp"
             android:paddingBottom="8dp" />
@@ -182,7 +183,7 @@
                 android:inputType="numberDecimal"
                 android:background="@drawable/input_background"
                 android:textColor="#FFFFFF"
-                android:hintTextColor="#DAD1FF"
+                android:textColorHint="#DAD1FF"
                 android:padding="16dp"
                 android:layout_marginEnd="8dp" />
 
@@ -195,21 +196,43 @@
                 android:inputType="numberDecimal"
                 android:background="@drawable/input_background"
                 android:textColor="#FFFFFF"
-                android:hintTextColor="#DAD1FF"
+                android:textColorHint="#DAD1FF"
                 android:padding="16dp"
                 android:layout_marginStart="8dp" />
         </LinearLayout>
 
         <!-- Progress bar -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+
         <ProgressBar
+            android:id="@+id/progressBar"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
-            android:layout_height="12dp"
-            android:progress="0"
+            android:layout_height="match_parent"
+            android:indeterminate="false"
             android:max="100"
-            android:progressTint="#00FF66"
-            android:backgroundTint="#000000"
-            android:indeterminate="false" />
+            android:progress="0"
+            android:progressDrawable="@drawable/custom_progress_bar" />
+
+            <View
+                android:id="@+id/mindGoalLine"
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="#3498DB"
+                android:visibility="invisible" />
+
+            <View
+                android:id="@+id/maxGoalLine"
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="#00FF00"
+                android:visibility="invisible" />
+
+        </FrameLayout>
     </LinearLayout>
 
     <!-- Expenses Header -->
@@ -221,37 +244,38 @@
         android:paddingVertical="8dp">
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Expenses:"
             android:textColor="#FFFFFF"
             android:layout_weight="1"
             android:textSize="16sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:text="View All:"
-            android:textColor="#AAAAFF"
-            android:textSize="14sp"
-            android:textStyle="italic" />
     </LinearLayout>
 
-    <!-- transactional Items -->
-    <LinearLayout
+    <!-- Scrollable Transactional Items -->
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="vertical"
-        android:paddingHorizontal="20dp">
+        android:paddingHorizontal="20dp"
+        android:fillViewport="true">
 
-        <TextView
-            android:id="@+id/tvtransactionalItems"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Here Shaun add it here. Unless you want something different. Its called tvExpenseItem"
-            android:textColor="#FFFFFF"
-            android:textSize="14sp"
-            android:paddingVertical="6dp" />
-    </LinearLayout>
+            android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/tvtransactionalItems"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="6dp"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </ScrollView>
 
     <!-- Navigation Bar -->
     <LinearLayout
