@@ -19,7 +19,6 @@ import androidx.lifecycle.ViewModelProvider
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
-import kotlin.math.max
 import androidx.core.widget.addTextChangedListener
 import kotlin.math.roundToInt
 
@@ -28,7 +27,6 @@ class HomepageActivity : AppCompatActivity() {
 
     private lateinit var transactionViewModel: TransactionViewModel
     private lateinit var tvTransactionalItems: TextView
-    private lateinit var tvTotalBalance: TextView
     private lateinit var tvCurrentDate: TextView
     private lateinit var etMinGoal: EditText
     private lateinit var etMaxGoal: EditText
@@ -48,10 +46,10 @@ class HomepageActivity : AppCompatActivity() {
 
         val viewModel = ViewModelProvider(this)[HomePageViewModel::class.java]
 
-        tvTotalBalance = findViewById(R.id.tvBalance)
+        val tvIncomeTotalDisplay: TextView = findViewById(R.id.tvIncomeTotalDisplay)
 
         viewModel.balanceLiveData.observe(this) { balance ->
-            tvTotalBalance.text = "R %.2f".format(balance)
+            tvIncomeTotalDisplay.text = "R %.2f".format(balance)
             totalBalanceValue = balance
 
             if (totalBalanceValue > 0) {
@@ -75,13 +73,11 @@ class HomepageActivity : AppCompatActivity() {
         // Income and Expense Totals
 
         val tvIncomeAmount: TextView = findViewById(R.id.tvIncomeAmount)
-        val tvIncomeDisplay: TextView = findViewById(R.id.tvIncomeTotalDisplay)
         val tvExpenseAmount: TextView = findViewById(R.id.tvExpenseAmount)
 
         viewModel.totalIncome.observe(this) { income ->
             val formatted = "R %.2f".format(income)
             tvIncomeAmount.text = formatted
-            tvIncomeDisplay.text = formatted
         }
 
         viewModel.totalExpenses.observe(this) { expenses ->
@@ -106,17 +102,23 @@ class HomepageActivity : AppCompatActivity() {
         viewModel.setMinGoal(savedMin.toDouble())
         viewModel.setMaxGoal(savedMax.toDouble())
 
-        etMinGoal.addTextChangedListener {
-            minGoalValue = it.toString().toDoubleOrNull() ?: 0.0
-            viewModel.setMinGoal(minGoalValue)
-            updateProgressAndGoalLines()
+        etMinGoal.setOnFocusChangeListener {_, hasFocus ->
+            if (!hasFocus) {
+                minGoalValue = etMinGoal.text.toString().toDoubleOrNull() ?: 0.0
+                viewModel.setMinGoal(minGoalValue)
+                updateProgressAndGoalLines()
+                saveGoals()
+            }
         }
 
-        etMaxGoal.addTextChangedListener {
-            maxGoalValue = it.toString().toDoubleOrNull() ?: 0.0
-            viewModel.setMaxGoal(maxGoalValue)
-            viewModel.refreshMonthlyExpense()
-            updateProgressAndGoalLines()
+        etMaxGoal.setOnFocusChangeListener {_, hasFocus ->
+            if (!hasFocus) {
+                maxGoalValue = etMaxGoal.text.toString().toDoubleOrNull() ?: 0.0
+                viewModel.setMaxGoal(maxGoalValue)
+                viewModel.refreshMonthlyExpense()
+                updateProgressAndGoalLines()
+                saveGoals()
+            }
         }
 
         viewModel.progressPercent.observe(this) { percent ->
@@ -148,7 +150,7 @@ class HomepageActivity : AppCompatActivity() {
         val minGoalLine: View = findViewById(R.id.mindGoalLine)
         val maxGoalLine: View = findViewById(R.id.maxGoalLine)
 
-        if (totalBalanceValue == 0.0) return
+        if (totalBalanceValue == 0.0 || progressBar.width == 0) return
 
         val minGoalProgress = ((minGoalValue / totalBalanceValue) * 100).coerceIn(0.0, 100.0)
         val maxGoalProgress = ((maxGoalValue / totalBalanceValue) * 100).coerceIn(0.0, 100.0)
@@ -159,18 +161,18 @@ class HomepageActivity : AppCompatActivity() {
             else -> ColorStateList.valueOf(Color.RED)
         }
 
-        if (minGoalProgress > 0) {
+        val progressWidth = progressBar.width
+
+        if ( minGoalValue> 0 && minGoalProgress > 0) {
             minGoalLine.visibility = View.VISIBLE
-            minGoalLine.layoutParams.width = (progressBar.width * (minGoalProgress / 100)).toInt()
-            minGoalLine.requestLayout()
+            minGoalLine.translationX = (progressWidth * (minGoalProgress / 100)).toFloat() - (minGoalLine.width / 2)
         } else {
             minGoalLine.visibility = View.INVISIBLE
         }
 
-        if (maxGoalProgress > 0) {
+        if (maxGoalValue > 0 && maxGoalProgress > 0) {
             maxGoalLine.visibility = View.VISIBLE
-            maxGoalLine.layoutParams.width = (progressBar.width * (maxGoalProgress / 100)).toInt()
-            maxGoalLine.requestLayout()
+            maxGoalLine.translationX = (progressWidth * (maxGoalProgress / 100)).toFloat() - (maxGoalLine.width / 2)
         } else {
             maxGoalLine.visibility = View.INVISIBLE
         }
@@ -182,6 +184,25 @@ class HomepageActivity : AppCompatActivity() {
         editor.putFloat("min_goal", etMinGoal.text.toString().toFloatOrNull() ?: 0f)
         editor.putFloat("max_goal", etMaxGoal.text.toString().toFloatOrNull() ?: 0f)
         editor.apply()
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        val viewModel = ViewModelProvider(this)[HomePageViewModel::class.java]
+
+        val prefs = getSharedPreferences("budget_prefs", MODE_PRIVATE)
+        val savedMin = prefs.getFloat("min_goal", 0f)
+        val savedMax = prefs.getFloat("max_goal", 0f)
+
+        etMinGoal.setText(savedMin.toString())
+        etMaxGoal.setText(savedMax.toString())
+        minGoalValue = savedMin.toDouble()
+        maxGoalValue = savedMax.toDouble()
+
+        viewModel.restoreGoals(savedMin.toDouble(), savedMax.toDouble())
+        viewModel.refreshMonthlyExpense()
+        updateProgressAndGoalLines()
     }
 
     override fun onPause() {

@@ -47,6 +47,8 @@ class HomePageViewModel(application: Application) : AndroidViewModel(application
             _balanceLiveData.postValue(income - expenses)
             _totalIncome.postValue(income)
             _totalExpenses.postValue(expenses)
+
+            updateProgressBar()
         }
     }
 
@@ -73,6 +75,12 @@ class HomePageViewModel(application: Application) : AndroidViewModel(application
         }
 
         _progressPercent.postValue(percent.toInt())
+    }
+
+    fun restoreGoals(minGoal: Double, maxGoal: Double) {
+        _minGoal.value = minGoal
+        _maxGoal.value = maxGoal
+        updateProgressBar()
     }
 
     fun setMinGoal(value: Double) {

@@ -18,10 +18,6 @@ class TransactionViewModel(private val repository: TransactionRepo) : ViewModel(
         }
     }
 
-    fun getAllTransactions() = liveData(Dispatchers.IO) {
-        emit(repository.getAllTransactions())
-    }
-
     fun getTotalSpentByCategory() = liveData(Dispatchers.IO) {
         emit(repository.getTotalSpentByCategory())
     }

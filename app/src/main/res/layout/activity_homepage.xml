@@ -52,7 +52,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Default"
+                android:text="Balance"
                 android:textColor="#FFFFFF"
                 android:textSize="14sp" />
 
@@ -222,7 +222,6 @@
                 android:id="@+id/mindGoalLine"
                 android:layout_width="2dp"
                 android:layout_height="match_parent"
-                android:layout_gravity="start"
                 android:background="#3498DB"
                 android:visibility="invisible" />
 
@@ -230,7 +229,6 @@
                 android:id="@+id/maxGoalLine"
                 android:layout_width="2dp"
                 android:layout_height="match_parent"
-                android:layout_gravity="start"
                 android:background="#00FF00"
                 android:visibility="invisible" />
 
