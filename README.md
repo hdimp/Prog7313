@@ -8,6 +8,7 @@ Android SDK Directory
 Make sure your local `local.properties` file includes the correct Android SDK path:
 "sdk.dir=C\:\\Users\\user\\AppData\\Local\\Android\\Sdk"
 user = your computer username
+Make sure you have the latest version of Android Studio and use VanillaIceCream when running the app.
 
 --------------------------------------
 GitHub Repository
