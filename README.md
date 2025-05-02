@@ -22,11 +22,17 @@ Watch the demo of the working application here:
 🎬 [https://youtu.be/LjYeOnwSG04]
 
 --------------------------------------
+WinRAR
+--------------------------------------
+1. Please use WinRar instead of zip.
+2. When you download the zip as winrar double-click the folder and copy the folder into your desktop.
+
+--------------------------------------
 How to Import from GitHub
 --------------------------------------
-1. Clone the repository using:
+1. Clone the repository using github desktop.
 2. Open Android Studio.
-3. Select File > Open** and navigate to the cloned project directory.
+3. Select File > Open and navigate to the cloned project directory.
 4. Sync Gradle and let dependencies load.
 5. Build the project using Build > Rebuild Project.
 
