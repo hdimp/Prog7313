@@ -18,7 +18,7 @@ import androidx.core.view.WindowInsetsCompat
 class Recurring : AppCompatActivity() {
 
     //--------------------------------------------
-    //
+    // UI components
     //--------------------------------------------
 
     private lateinit var editStartDate: EditText
@@ -34,7 +34,7 @@ class Recurring : AppCompatActivity() {
         setContentView(R.layout.activity_recurring)
 
         //--------------------------------------------
-        //
+        // Binding UI elements
         //--------------------------------------------
 
         editStartTime = findViewById(R.id.editStartTime)
@@ -45,13 +45,13 @@ class Recurring : AppCompatActivity() {
         submitButton = findViewById(R.id.btnSubmitRecurring)
 
         //--------------------------------------------
-        //
+        // Get calendar date
         //--------------------------------------------
 
         val calendar = Calendar.getInstance()
 
         //--------------------------------------------
-        //
+        // Date picker logic start date
         //--------------------------------------------
 
         editStartDate.setOnClickListener {
@@ -69,7 +69,7 @@ class Recurring : AppCompatActivity() {
         }
 
         //--------------------------------------------
-        //
+        // Timepicker logic start time
         //--------------------------------------------
 
         editStartTime.setOnClickListener {
@@ -87,7 +87,7 @@ class Recurring : AppCompatActivity() {
         }
 
         //--------------------------------------------
-        //
+        // Date picker logic end date
         //--------------------------------------------
 
         editEndDate.setOnClickListener {
@@ -105,7 +105,7 @@ class Recurring : AppCompatActivity() {
         }
 
         //--------------------------------------------
-        //
+        // Time picker logic for end time
         //--------------------------------------------
 
         editEndTime.setOnClickListener {
@@ -123,7 +123,7 @@ class Recurring : AppCompatActivity() {
         }
 
         //--------------------------------------------
-        //
+        // Submit button logic
         //--------------------------------------------
 
         submitButton.setOnClickListener {
@@ -159,7 +159,7 @@ class Recurring : AppCompatActivity() {
     }
 
     //--------------------------------------------
-    //
+    // Timestamp converter to UNIX
     //--------------------------------------------
 
     private fun parseToTimestamp(date: String, time: String): Long? {

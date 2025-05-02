@@ -12,7 +12,7 @@ import androidx.lifecycle.Observer
 class Login : AppCompatActivity() {
 
     //--------------------------------------------
-    //
+    // View model for user database
     //--------------------------------------------
 
     private lateinit var userViewModel: UserViewModel
@@ -22,7 +22,7 @@ class Login : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         //--------------------------------------------
-        //
+        // Initialized database, dao, repo and viewmodel
         //--------------------------------------------
 
         val database = AppDatabase.getDatabase(this)
@@ -31,7 +31,7 @@ class Login : AppCompatActivity() {
         userViewModel = ViewModelProvider(this, UserViewModelFactory(repository)).get(UserViewModel::class.java)
 
         //--------------------------------------------
-        //
+        // Component references
         //--------------------------------------------
 
         val editTextUsername = findViewById<EditText>(R.id.txtUsername)
@@ -39,7 +39,7 @@ class Login : AppCompatActivity() {
         val buttonLogin = findViewById<Button>(R.id.btnLog)
 
         //--------------------------------------------
-        //
+        // Login button click logic
         //--------------------------------------------
 
         buttonLogin.setOnClickListener {

@@ -3,7 +3,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 //--------------------------------------------
-//
+// User database table
 //--------------------------------------------
 
 @Entity(tableName = "users")

@@ -15,7 +15,7 @@ import androidx.core.view.WindowInsetsCompat
 class UploadPhoto : AppCompatActivity() {
 
     //--------------------------------------------
-    //
+    // private variables
     //--------------------------------------------
 
     private lateinit var imageViewPreview: ImageView
@@ -24,7 +24,7 @@ class UploadPhoto : AppCompatActivity() {
     private var selectedImageUri: Uri? = null
 
     //--------------------------------------------
-    //
+    // Singleton for once off
     //--------------------------------------------
 
     companion object {
@@ -37,7 +37,7 @@ class UploadPhoto : AppCompatActivity() {
         setContentView(R.layout.activity_upload_photo)
 
         //--------------------------------------------
-        //
+        // UI binds
         //--------------------------------------------
 
         imageViewPreview = findViewById(R.id.imgPreview)
@@ -45,7 +45,7 @@ class UploadPhoto : AppCompatActivity() {
         buttonConfirmPhoto = findViewById(R.id.btnConfirmPhoto)
 
         //--------------------------------------------
-        //
+        // Click listener for select image
         //--------------------------------------------
 
         buttonSelectPhoto.setOnClickListener {
@@ -55,7 +55,7 @@ class UploadPhoto : AppCompatActivity() {
         }
 
         //--------------------------------------------
-        //
+        // Click listener image confirm
         //--------------------------------------------
 
         buttonConfirmPhoto.setOnClickListener {
@@ -69,7 +69,7 @@ class UploadPhoto : AppCompatActivity() {
     }
 
     //--------------------------------------------
-    //
+    // Function to send image string to transaction
     //--------------------------------------------
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 //--------------------------------------------
-//
+// Database table for budget
 //--------------------------------------------
 
 @Entity(tableName = "budget")

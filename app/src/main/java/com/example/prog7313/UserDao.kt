@@ -9,7 +9,7 @@ import androidx.room.Update
 interface UserDao {
 
     //--------------------------------------------
-    //
+    // Database queries
     //--------------------------------------------
 
     @Insert

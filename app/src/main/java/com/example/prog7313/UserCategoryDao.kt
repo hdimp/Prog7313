@@ -10,7 +10,7 @@ import androidx.room.Query
 interface UserCategoryDao {
 
     //--------------------------------------------
-    //
+    // Database queries
     //--------------------------------------------
 
     @Insert

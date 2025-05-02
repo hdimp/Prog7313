@@ -25,13 +25,13 @@ class CreateCategory : AppCompatActivity() {
         setContentView(R.layout.activity_create_category)
 
         //--------------------------------------------
-        //
+        // Bottom navigation bar
         //--------------------------------------------
 
         setupNavigation()
 
         //--------------------------------------------
-        //
+        // Get references
         //--------------------------------------------
 
         val radioGroup = findViewById<RadioGroup>(R.id.radioGroup)
@@ -39,7 +39,7 @@ class CreateCategory : AppCompatActivity() {
         val btnCreateCategory = findViewById<Button>(R.id.btnCreateCategory)
 
         //--------------------------------------------
-        //
+        // Handle category logic
         //--------------------------------------------
 
         btnCreateCategory.setOnClickListener {
@@ -70,21 +70,17 @@ class CreateCategory : AppCompatActivity() {
     }
 
     //--------------------------------------------
-    //
+    // Bottom nav bar navigation
     //--------------------------------------------
 
     private fun setupNavigation() {
-
-        //--------------------------------------------
-        //
-        //--------------------------------------------
 
         val navHome = findViewById<LinearLayout>(R.id.navHome)
         val navTimeline = findViewById<LinearLayout>(R.id.navTimeline)
         val navSettings = findViewById<LinearLayout>(R.id.navSettings)
 
         //--------------------------------------------
-        //
+        // Click listeners
         //--------------------------------------------
 
         navHome.setOnClickListener {

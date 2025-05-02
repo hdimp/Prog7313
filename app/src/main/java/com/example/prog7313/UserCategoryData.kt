@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 //--------------------------------------------
-//
+// Category database table
 //--------------------------------------------
 
 @Entity(tableName = "categories")

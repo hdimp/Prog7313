@@ -18,7 +18,7 @@ class Analytics : AppCompatActivity() {
         setContentView(R.layout.activity_analytics)
 
         //--------------------------------------------
-        //
+        // Bottom nav bar setup
         //--------------------------------------------
 
         setupNavigation()
@@ -26,16 +26,12 @@ class Analytics : AppCompatActivity() {
 
     private fun setupNavigation() {
 
-        //--------------------------------------------
-        //
-        //--------------------------------------------
-
         val navHome = findViewById<LinearLayout>(R.id.navHome)
         val navTimeline = findViewById<LinearLayout>(R.id.navTimeline)
         val navSettings = findViewById<LinearLayout>(R.id.navSettings)
 
         //--------------------------------------------
-        //
+        // Click listeners for nav bar
         //--------------------------------------------
 
         navHome.setOnClickListener {

@@ -13,6 +13,10 @@ import kotlinx.coroutines.launch
 
 class EditCategories : AppCompatActivity() {
 
+    //--------------------------------------------
+    // Viewmodel variables
+    //--------------------------------------------
+
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: UserCategoryAdapter
     private lateinit var viewModel: UserCategoryViewModel
@@ -21,6 +25,11 @@ class EditCategories : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_edit_categories)
+
+        //--------------------------------------------
+        // Initialized recycler view and adapter
+        // https://stackoverflow.com/questions/71604788/why-my-recyclerview-show-unresolved-reference-recyclerview
+        //--------------------------------------------
 
         recyclerView = findViewById(R.id.rvUserCategories)
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -39,6 +48,10 @@ class EditCategories : AppCompatActivity() {
 
         viewModel.loadAllCategories()
     }
+
+    //--------------------------------------------
+    // Delete user category function
+    //--------------------------------------------
 
     private fun deleteCategory(category: UserCategoryData) {
         viewModel.viewModelScope.launch {

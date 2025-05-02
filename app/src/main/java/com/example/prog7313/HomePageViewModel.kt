@@ -11,13 +11,13 @@ import kotlin.math.exp
 class HomePageViewModel(application: Application) : AndroidViewModel(application) {
 
     //--------------------------------------------
-    //
+    // Repository for access
     //--------------------------------------------
 
     private val repo: TransactionRepo = TransactionRepo(AppDatabase.getDatabase(application).transactionDao())
 
     //--------------------------------------------
-    //
+    // Live data for balance, income and expenses
     //--------------------------------------------
 
     private val _balanceLiveData = MutableLiveData<Double>()
@@ -30,7 +30,7 @@ class HomePageViewModel(application: Application) : AndroidViewModel(application
     val totalExpenses: LiveData<Double> get() = _totalExpenses
 
     //--------------------------------------------
-    //
+    // Live data for monthly expenses, minGoal, maxGoal and progress percentage
     //--------------------------------------------
 
     private val _monthlyExpenseLiveData = MutableLiveData<Double>()
@@ -46,7 +46,7 @@ class HomePageViewModel(application: Application) : AndroidViewModel(application
     val progressPercent: LiveData<Int> get() = _progressPercent
 
     //--------------------------------------------
-    //
+    // Calculate total balance
     //--------------------------------------------
 
     fun calculateBalance() {
@@ -63,7 +63,7 @@ class HomePageViewModel(application: Application) : AndroidViewModel(application
     }
 
     //--------------------------------------------
-    //
+    // Load monthly expenses
     //--------------------------------------------
 
     fun loadMonthlyExpense() {
@@ -74,6 +74,10 @@ class HomePageViewModel(application: Application) : AndroidViewModel(application
                 updateProgressBar()
             }
     }
+
+    //--------------------------------------------
+    // Progress bar updates
+    //--------------------------------------------
 
     private fun updateProgressBar() {
         val max = _maxGoal.value
@@ -93,21 +97,37 @@ class HomePageViewModel(application: Application) : AndroidViewModel(application
         _progressPercent.postValue(percent.toInt())
     }
 
+    //--------------------------------------------
+    // Restore min and max goals
+    //--------------------------------------------
+
     fun restoreGoals(minGoal: Double, maxGoal: Double) {
         _minGoal.value = minGoal
         _maxGoal.value = maxGoal
         updateProgressBar()
     }
 
+    //--------------------------------------------
+    // sets min goal
+    //--------------------------------------------
+
     fun setMinGoal(value: Double) {
         _minGoal.value = value
         updateProgressBar()
     }
 
+    //--------------------------------------------
+    // sets max goal
+    //--------------------------------------------
+
     fun setMaxGoal(value: Double) {
         _maxGoal.value = value
         updateProgressBar()
     }
+
+    //--------------------------------------------
+    // refreshes monthly expenses
+    //--------------------------------------------
 
     fun refreshMonthlyExpense() {
         loadMonthlyExpense()

@@ -4,7 +4,7 @@ import androidx.room.Transaction
 import java.sql.Timestamp
 
 //--------------------------------------------
-//
+// Database functions
 //--------------------------------------------
 
 class TransactionRepo(private val transactionDao: TransactionDao) {
@@ -49,7 +49,8 @@ class TransactionRepo(private val transactionDao: TransactionDao) {
 }
 
 //--------------------------------------------
-//
+// Function to get start and end of day
+// https://stackoverflow.com/questions/48647950/how-to-set-calendar-object-to-current-date-but-time-from-simpledateformat-that-c
 //--------------------------------------------
 
 private fun getStartAndEndOfDay(selectedDateTimestamp: Long): Pair<Long, Long> {
@@ -57,7 +58,7 @@ private fun getStartAndEndOfDay(selectedDateTimestamp: Long): Pair<Long, Long> {
     calendar.timeInMillis = selectedDateTimestamp
 
     //--------------------------------------------
-    //
+    // Start of day
     //--------------------------------------------
 
     calendar.set(java.util.Calendar.HOUR_OF_DAY, 0)
@@ -67,7 +68,7 @@ private fun getStartAndEndOfDay(selectedDateTimestamp: Long): Pair<Long, Long> {
     val startOfDay = calendar.timeInMillis
 
     //--------------------------------------------
-    //
+    // End of day
     //--------------------------------------------
 
     calendar.set(java.util.Calendar.HOUR_OF_DAY, 23)
@@ -80,14 +81,14 @@ private fun getStartAndEndOfDay(selectedDateTimestamp: Long): Pair<Long, Long> {
 }
 
 //--------------------------------------------
-//
+// Function to get start and end of month
 //--------------------------------------------
 
 private fun getStartAndEndOfCurrentMonth(): Pair<Long, Long> {
     val calendar = java.util.Calendar.getInstance()
 
     //--------------------------------------------
-    //
+    // Start of month
     //--------------------------------------------
 
     calendar.set(java.util.Calendar.DAY_OF_MONTH, 1)
@@ -98,7 +99,7 @@ private fun getStartAndEndOfCurrentMonth(): Pair<Long, Long> {
     val startOfMonth = calendar.timeInMillis
 
     //--------------------------------------------
-    //
+    // End of month
     //--------------------------------------------
 
     calendar.add(java.util.Calendar.MONTH, 1)

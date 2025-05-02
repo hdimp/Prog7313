@@ -26,6 +26,10 @@ import java.io.File
 
 class IndividualTransactions : AppCompatActivity() {
 
+    //--------------------------------------------
+    // Private variables
+    //--------------------------------------------
+
     private lateinit var viewModel: TransactionViewModel
     private var transactionId: Long = -1L
 
@@ -34,7 +38,15 @@ class IndividualTransactions : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_individual_transactions)
 
+        //--------------------------------------------
+        // Bottom nav setup
+        //--------------------------------------------
+
         setupNavigation()
+
+        //--------------------------------------------
+        // Transaction logic based on transaction ID
+        //--------------------------------------------
 
         transactionId = intent.getLongExtra("transactionId", -1)
 
@@ -54,6 +66,10 @@ class IndividualTransactions : AppCompatActivity() {
             finish()
         }
     }
+
+    //--------------------------------------------
+    // Populates UI fields
+    //--------------------------------------------
 
     private fun populateUI(data: TransactionData) {
         findViewById<TextView>(R.id.tvTransactionType).text = data.transactionType
@@ -92,6 +108,10 @@ class IndividualTransactions : AppCompatActivity() {
         }
     }
 
+    //--------------------------------------------
+    // Displays transaction image
+    //--------------------------------------------
+
     private fun showImagePopup(imagePath: String) {
         val dialog = Dialog(this)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -106,6 +126,10 @@ class IndividualTransactions : AppCompatActivity() {
         dialog.show()
     }
 
+    //--------------------------------------------
+    // Timestamp conversion
+    //--------------------------------------------
+
     private fun formatTimestamp(timestamp: Long): String {
         val sdf = java.text.SimpleDateFormat("dd MMM yyyy", java.util.Locale.getDefault())
         return sdf.format(java.util.Date(timestamp))
@@ -113,16 +137,12 @@ class IndividualTransactions : AppCompatActivity() {
 
     private fun setupNavigation() {
 
-        //--------------------------------------------
-        //
-        //--------------------------------------------
-
         val navHome = findViewById<LinearLayout>(R.id.navHome)
         val navTimeline = findViewById<LinearLayout>(R.id.navTimeline)
         val navSettings = findViewById<LinearLayout>(R.id.navSettings)
 
         //--------------------------------------------
-        //
+        // Click listeners
         //--------------------------------------------
 
 

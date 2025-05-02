@@ -22,7 +22,7 @@ class Settings : AppCompatActivity() {
         setupNavigation()
 
         //--------------------------------------------
-        //
+        // UI binds for click listeners
         //--------------------------------------------
 
         val settingHome = findViewById<TextView>(R.id.settingHome)

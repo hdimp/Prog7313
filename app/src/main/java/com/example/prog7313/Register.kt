@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 class Register : AppCompatActivity() {
 
     //--------------------------------------------
-    //
+    // Private variables
     //--------------------------------------------
 
     private lateinit var userViewModel: UserViewModel
@@ -21,7 +21,7 @@ class Register : AppCompatActivity() {
         setContentView(R.layout.activity_register)
 
         //--------------------------------------------
-        //
+        // Initialized database, dao, repo and viewmodel
         //--------------------------------------------
 
         val database = AppDatabase.getDatabase(this)
@@ -30,7 +30,7 @@ class Register : AppCompatActivity() {
         userViewModel = ViewModelProvider(this, UserViewModelFactory(repository)).get(UserViewModel::class.java)
 
         //--------------------------------------------
-        //
+        // UI component binds
         //--------------------------------------------
 
         val editTextFullName = findViewById<EditText>(R.id.txtFullName)
@@ -40,7 +40,7 @@ class Register : AppCompatActivity() {
         val buttonSubmit = findViewById<Button>(R.id.btnCreate)
 
         //--------------------------------------------
-        //
+        // Click listener for submit button and logic
         //--------------------------------------------
 
         buttonSubmit.setOnClickListener {

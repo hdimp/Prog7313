@@ -30,7 +30,7 @@ import java.util.Locale
 class Timeline : AppCompatActivity() {
 
     //--------------------------------------------
-    //
+    // Viewmodel and UI elements
     //--------------------------------------------
 
     private lateinit var transactionViewModel: TransactionViewModel
@@ -46,13 +46,13 @@ class Timeline : AppCompatActivity() {
         setContentView(R.layout.activity_timeline)
 
         //--------------------------------------------
-        //
+        // Bottom nav bar setup
         //--------------------------------------------
 
         setupNavigation()
 
         //--------------------------------------------
-        //
+        // Initialized database, dao, repo, factory and viewmodel
         //--------------------------------------------
 
         val database = AppDatabase.getDatabase(applicationContext)
@@ -62,7 +62,7 @@ class Timeline : AppCompatActivity() {
         transactionViewModel = ViewModelProvider(this, factory)[TransactionViewModel::class.java]
 
         //--------------------------------------------
-        //
+        // Binds for UI elements
         //--------------------------------------------
 
         calendarView = findViewById(R.id.calendarView)
@@ -72,7 +72,7 @@ class Timeline : AppCompatActivity() {
         transactionsTextView = findViewById(R.id.transactionsTextView)
 
         //--------------------------------------------
-        //
+        // Set date picker functionality
         //--------------------------------------------
 
         calendarView.setOnDateChangeListener {_, year, month, dayOfMonth ->
@@ -105,7 +105,7 @@ class Timeline : AppCompatActivity() {
     }
 
     //--------------------------------------------
-    //
+    // Transactions diplsayed in list
     //--------------------------------------------
 
     private fun displayTransactions(transactions: List<TransactionData>) {
@@ -152,20 +152,16 @@ class Timeline : AppCompatActivity() {
     }
 
     //--------------------------------------------
-    //
+    // Bottom nav setup
     //--------------------------------------------
 
     private fun setupNavigation() {
-
-        //--------------------------------------------
-        //
-        //--------------------------------------------
 
         val navHome = findViewById<LinearLayout>(R.id.navHome)
         val navSettings = findViewById<LinearLayout>(R.id.navSettings)
 
         //--------------------------------------------
-        //
+        // Click listeners for nav bar
         //--------------------------------------------
 
         navHome.setOnClickListener {

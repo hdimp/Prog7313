@@ -6,7 +6,7 @@ import androidx.room.RoomDatabase
 
 
 //--------------------------------------------
-//
+// Main database class
 //--------------------------------------------
 
 @Database(entities = [
@@ -16,7 +16,7 @@ import androidx.room.RoomDatabase
 abstract class AppDatabase : RoomDatabase() {
 
     //--------------------------------------------
-    //
+    // Abstract methods
     //--------------------------------------------
 
     abstract fun userDao(): UserDao
@@ -25,7 +25,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun userCategoryDao(): UserCategoryDao
 
     //--------------------------------------------
-    //
+    // Singleton pattern for one instance of database
     //--------------------------------------------
 
     companion object {

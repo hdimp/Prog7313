@@ -11,14 +11,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         //--------------------------------------------
-        //
+        // references for buttons
         //--------------------------------------------
 
         val btnLogin = findViewById<Button>(R.id.btnLogin)
         val btnCreateAccount = findViewById<Button>(R.id.btnCreateAccount)
 
         //--------------------------------------------
-        //
+        // click listener for login button
         //--------------------------------------------
 
         btnLogin.setOnClickListener {
@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         //--------------------------------------------
-        //
+        // click listener for create account
         //--------------------------------------------
 
         btnCreateAccount.setOnClickListener {

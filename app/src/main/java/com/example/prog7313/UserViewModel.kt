@@ -10,7 +10,7 @@ import kotlinx.coroutines.Job
 class UserViewModel(private val repository: UserRepository) : ViewModel() {
 
     //--------------------------------------------
-    //
+    // function to insert user
     //--------------------------------------------
 
     fun insertUser(user: User) {
@@ -20,7 +20,7 @@ class UserViewModel(private val repository: UserRepository) : ViewModel() {
     }
 
     //--------------------------------------------
-    //
+    // Function to get user by username
     //--------------------------------------------
 
     fun getUserByUsername(username: String) = liveData(Dispatchers.IO) {
@@ -30,7 +30,7 @@ class UserViewModel(private val repository: UserRepository) : ViewModel() {
 }
 
 //--------------------------------------------
-//
+// User model factory
 //--------------------------------------------
 
 class UserViewModelFactory(private val repository: UserRepository) : ViewModelProvider.Factory {

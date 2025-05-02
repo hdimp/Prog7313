@@ -9,7 +9,7 @@ import java.time.Month
 interface TransactionDao {
 
     //--------------------------------------------
-    //
+    // Database queries
     //--------------------------------------------
 
     @Insert

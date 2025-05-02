@@ -15,7 +15,7 @@ import androidx.lifecycle.Observer
 class CategoryActivity : AppCompatActivity() {
 
     //--------------------------------------------
-    //
+    // Private variables
     //--------------------------------------------
 
     private lateinit var expenseContainer: LinearLayout
@@ -29,20 +29,20 @@ class CategoryActivity : AppCompatActivity() {
         setContentView(R.layout.activity_category)
 
         //--------------------------------------------
-        //
+        // Initialised containers
         //--------------------------------------------
 
         expenseContainer = findViewById(R.id.expenseCategoriesContainer)
         incomeContainer = findViewById(R.id.incomeCategoriesContainer)
 
         //--------------------------------------------
-        //
+        // Get transaction type
         //--------------------------------------------
 
         val transactionType = intent.getStringExtra("transactionType")
 
         //--------------------------------------------
-        //
+        // Show or hide appropriate category section
         //--------------------------------------------
 
         if (transactionType == "Income") {
@@ -54,7 +54,7 @@ class CategoryActivity : AppCompatActivity() {
         }
 
         //--------------------------------------------
-        //
+        // Initialized view model and custom categories
         //--------------------------------------------
 
         categoryViewModel = ViewModelProvider(this).get(UserCategoryViewModel::class.java)
@@ -91,7 +91,7 @@ class CategoryActivity : AppCompatActivity() {
         })
 
         //--------------------------------------------
-        //
+        // Category listener
         //--------------------------------------------
 
         setupCategorySelection()
@@ -99,13 +99,13 @@ class CategoryActivity : AppCompatActivity() {
     }
 
     //--------------------------------------------
-    //
+    // Click listeners
     //--------------------------------------------
 
     private fun setupCategorySelection() {
 
         //--------------------------------------------
-        //
+        // Expense categories
         //--------------------------------------------
 
         findViewById<TextView>(R.id.tvHousing)?.setOnClickListener { selectCategory("Housing") }
@@ -117,7 +117,7 @@ class CategoryActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.tvEntertainment)?.setOnClickListener { selectCategory("Entertainment") }
 
         //--------------------------------------------
-        //
+        // Income categories
         //--------------------------------------------
 
         findViewById<TextView>(R.id.tvSalary)?.setOnClickListener { selectCategory("Salary") }
@@ -126,7 +126,7 @@ class CategoryActivity : AppCompatActivity() {
     }
 
     //--------------------------------------------
-    //
+    // Category selection
     //--------------------------------------------
 
     private fun selectCategory(category: String) {

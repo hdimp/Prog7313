@@ -24,7 +24,7 @@ import java.util.Locale
 class Transactions : AppCompatActivity() {
 
     //--------------------------------------------
-    //
+    // private variables
     //--------------------------------------------
 
     private lateinit var transactionViewModel: TransactionViewModel
@@ -32,14 +32,14 @@ class Transactions : AppCompatActivity() {
     private var selectedCategory: String = ""
 
     //--------------------------------------------
-    //
+    // private variables for images
     //--------------------------------------------
 
     private lateinit var uploadPhotoButton: TextView
     private var selectedImageUri: Uri? = null
 
     //--------------------------------------------
-    //
+    // private variables for frequency and timestamps
     //--------------------------------------------
 
     private var selectedFrequency: String? = null
@@ -47,7 +47,7 @@ class Transactions : AppCompatActivity() {
     private var endTimestamp: Long? = null
 
     //--------------------------------------------
-    //
+    // Activity to open reccuring activity
     //--------------------------------------------
 
     private val recurringActivityLauncher = registerForActivityResult(
@@ -62,7 +62,7 @@ class Transactions : AppCompatActivity() {
     }
 
     //--------------------------------------------
-    //
+    // funtion to start category selection activity
     //--------------------------------------------
 
     private val categoryActivityLauncher = registerForActivityResult(
@@ -79,7 +79,7 @@ class Transactions : AppCompatActivity() {
     }
 
     //--------------------------------------------
-    //
+    // funtion to start photo selection activity
     //--------------------------------------------
 
     private  val photoActivityLauncher = registerForActivityResult(
@@ -98,13 +98,13 @@ class Transactions : AppCompatActivity() {
         setContentView(R.layout.activity_transactions)
 
         //--------------------------------------------
-        //
+        // bottom nav bar setup
         //--------------------------------------------
 
         setupNavigation()
 
         //--------------------------------------------
-        //
+        // Initialized database, dao, repo and viewmodel
         //--------------------------------------------
 
         val database = AppDatabase.getDatabase(this)
@@ -113,7 +113,7 @@ class Transactions : AppCompatActivity() {
         transactionViewModel = ViewModelProvider(this, TransactionViewModelFactory(repository)).get(TransactionViewModel::class.java)
 
         //--------------------------------------------
-        //
+        // UI binds
         //--------------------------------------------
 
         val radioGroupTransactionType = findViewById<RadioGroup>(R.id.transactionTypeGroup)
@@ -124,7 +124,7 @@ class Transactions : AppCompatActivity() {
         val buttonSubmit = findViewById<Button>(R.id.btnSubmit)
 
         //--------------------------------------------
-        //
+        // Function to select category
         //--------------------------------------------
 
         textViewSelectCategory = findViewById(R.id.tvSelectCategory)
@@ -145,7 +145,7 @@ class Transactions : AppCompatActivity() {
         }
 
         //--------------------------------------------
-        //
+        // upload photo click listener
         //--------------------------------------------
 
         uploadPhotoButton = findViewById(R.id.tvUploadPhoto)
@@ -156,7 +156,7 @@ class Transactions : AppCompatActivity() {
         }
 
         //--------------------------------------------
-        //
+        // recurring activity click listener
         //--------------------------------------------
 
         val tvRecurring = findViewById<TextView>(R.id.tvRecurring)
@@ -179,7 +179,7 @@ class Transactions : AppCompatActivity() {
         }
 
         //--------------------------------------------
-        //
+        // Submit click listener
         //--------------------------------------------
 
         buttonSubmit.setOnClickListener {
@@ -233,22 +233,14 @@ class Transactions : AppCompatActivity() {
     }
 
     //--------------------------------------------
-    //
+    // bottom nav bar setup
     //--------------------------------------------
 
     private fun setupNavigation() {
 
-        //--------------------------------------------
-        //
-        //--------------------------------------------
-
         val navHome = findViewById<LinearLayout>(R.id.navHome)
         val navTimeline = findViewById<LinearLayout>(R.id.navTimeline)
         val navSettings = findViewById<LinearLayout>(R.id.navSettings)
-
-        //--------------------------------------------
-        //
-        //--------------------------------------------
 
         navHome.setOnClickListener {
             val intent = Intent(this, HomepageActivity::class.java)

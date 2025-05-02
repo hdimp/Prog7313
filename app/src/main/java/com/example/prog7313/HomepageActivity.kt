@@ -27,7 +27,7 @@ import kotlin.math.roundToInt
 class HomepageActivity : AppCompatActivity() {
 
     //--------------------------------------------
-    //
+    // View model declarations
     //--------------------------------------------
 
     private lateinit var transactionViewModel: TransactionViewModel
@@ -42,7 +42,7 @@ class HomepageActivity : AppCompatActivity() {
     private lateinit var viewModel: HomePageViewModel
 
     //--------------------------------------------
-    //
+    // Activity creation
     //--------------------------------------------
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,7 +51,7 @@ class HomepageActivity : AppCompatActivity() {
         setContentView(R.layout.activity_homepage)
 
         //--------------------------------------------
-        //
+        // Initialized TransactionViewModel
         //--------------------------------------------
 
         val dao = AppDatabase.getDatabase(application).transactionDao()
@@ -60,19 +60,19 @@ class HomepageActivity : AppCompatActivity() {
         transactionViewModel = ViewModelProvider(this, factory)[TransactionViewModel::class.java]
 
         //--------------------------------------------
-        //
+        // Initialized HomePageViewModel
         //--------------------------------------------
 
         viewModel = ViewModelProvider(this)[HomePageViewModel::class.java]
 
         //--------------------------------------------
-        //
+        // Bottom nav setup
         //--------------------------------------------
 
         setupNavigation()
 
         //--------------------------------------------
-        //
+        // Display and update balance
         //--------------------------------------------
 
         val tvIncomeTotalDisplay: TextView = findViewById(R.id.tvIncomeTotalDisplay)
@@ -85,7 +85,7 @@ class HomepageActivity : AppCompatActivity() {
         viewModel.calculateBalance()
 
         //--------------------------------------------
-        //
+        // Display current date
         //--------------------------------------------
 
         tvCurrentDate = findViewById(R.id.tvDate)
@@ -94,7 +94,7 @@ class HomepageActivity : AppCompatActivity() {
         tvCurrentDate.text = date
 
         //--------------------------------------------
-        //
+        // Display income and expense
         //--------------------------------------------
 
         val tvIncomeAmount: TextView = findViewById(R.id.tvIncomeAmount)
@@ -110,7 +110,7 @@ class HomepageActivity : AppCompatActivity() {
         }
 
         //--------------------------------------------
-        //
+        // Setup goal inputs and progress bar
         //--------------------------------------------
 
         viewModel.loadMonthlyExpense()
@@ -130,7 +130,7 @@ class HomepageActivity : AppCompatActivity() {
         viewModel.setMaxGoal(savedMax.toDouble())
 
         //--------------------------------------------
-        //
+        // Save and update min goal
         //--------------------------------------------
 
         etMinGoal.setOnFocusChangeListener {_, hasFocus ->
@@ -145,7 +145,7 @@ class HomepageActivity : AppCompatActivity() {
         }
 
         //--------------------------------------------
-        //
+        // Save and update max goal
         //--------------------------------------------
 
         etMaxGoal.setOnFocusChangeListener {_, hasFocus ->
@@ -161,7 +161,7 @@ class HomepageActivity : AppCompatActivity() {
         }
 
         //--------------------------------------------
-        //
+        // Observe and update progress
         //--------------------------------------------
 
         viewModel.progressPercent.observe(this) { percent ->
@@ -175,7 +175,7 @@ class HomepageActivity : AppCompatActivity() {
         }
 
         //--------------------------------------------
-        //
+        // Load and display spending per category
         //--------------------------------------------
 
         val categoryTotalsContainer = findViewById<LinearLayout>(R.id.categoryTotalsContainer)
@@ -215,7 +215,7 @@ class HomepageActivity : AppCompatActivity() {
     }
 
     //--------------------------------------------
-    //
+    // Update progress bar and goal indicators
     //--------------------------------------------
 
     private fun updateProgressAndGoalLines(currentPercent: Int = progressBar.progress) {
@@ -251,7 +251,7 @@ class HomepageActivity : AppCompatActivity() {
     }
 
     //--------------------------------------------
-    //
+    // Save goal values
     //--------------------------------------------
 
     private fun saveGoals() {
@@ -267,7 +267,7 @@ class HomepageActivity : AppCompatActivity() {
     }
 
     //--------------------------------------------
-    //
+    // Restore goal values
     //--------------------------------------------
 
     override fun onResume() {
@@ -287,7 +287,7 @@ class HomepageActivity : AppCompatActivity() {
     }
 
     //--------------------------------------------
-    //
+    // Save goals before activity pause
     //--------------------------------------------
 
     override fun onPause() {
@@ -296,21 +296,17 @@ class HomepageActivity : AppCompatActivity() {
     }
 
     //--------------------------------------------
-    //
+    // Bottom navigation setup
     //--------------------------------------------
 
     private fun setupNavigation() {
-
-        //--------------------------------------------
-        //
-        //--------------------------------------------
 
         val navTimeline = findViewById<LinearLayout>(R.id.navTimeline)
         val navSettings = findViewById<LinearLayout>(R.id.navSettings)
         val buttonAddTransaction = findViewById<Button>(R.id.btnAddTransaction)
 
         //--------------------------------------------
-        //
+        // Click listeners
         //--------------------------------------------
 
         navTimeline.setOnClickListener {

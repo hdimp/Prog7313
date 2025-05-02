@@ -13,7 +13,7 @@ import java.sql.Timestamp
 class TransactionViewModel(private val repository: TransactionRepo) : ViewModel() {
 
     //--------------------------------------------
-    //
+    // Database functions
     //--------------------------------------------
 
     fun insertTransaction(transactionData: TransactionData) {
@@ -42,7 +42,7 @@ class TransactionViewModel(private val repository: TransactionRepo) : ViewModel(
 }
 
 //--------------------------------------------
-//
+// Factory setup for view model
 //--------------------------------------------
 
 class TransactionViewModelFactory(private val repository: TransactionRepo) : ViewModelProvider.Factory {
