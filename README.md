@@ -19,7 +19,7 @@ Access the full source code here:
 YouTube Demo
 --------------------------------------
 Watch the demo of the working application here:  
-🎬 [https://youtu.be/4MImOkUHPsc]
+🎬 [https://www.youtube.com/watch?v=4MImOkUHPsc]
 --------------------------------------
 WinRAR
 --------------------------------------
