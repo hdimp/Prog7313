@@ -17,16 +17,23 @@ class Analytics : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_analytics)
 
+        //--------------------------------------------
+        // Bottom nav bar setup
+        //--------------------------------------------
+
         setupNavigation()
     }
 
     private fun setupNavigation() {
-        // Find navigation elements
+
         val navHome = findViewById<LinearLayout>(R.id.navHome)
         val navTimeline = findViewById<LinearLayout>(R.id.navTimeline)
         val navSettings = findViewById<LinearLayout>(R.id.navSettings)
 
-        // Set click listeners
+        //--------------------------------------------
+        // Click listeners for nav bar
+        //--------------------------------------------
+
         navHome.setOnClickListener {
             val intent = Intent(this, HomepageActivity::class.java)
             startActivity(intent)

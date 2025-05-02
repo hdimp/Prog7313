@@ -32,6 +32,35 @@
                 android:gravity="center"
                 android:layout_marginBottom="24dp" />
 
+            <!-- transaction type field -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="16dp"
+                android:background="#4B3F72"
+                android:padding="16dp" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Transaction Type"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/tvTransactionType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Expense"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+
             <!-- Amount Field -->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -148,7 +177,19 @@
                     android:layout_height="wrap_content"
                     android:text="No image attached"
                     android:textColor="#FFFFFF"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:layout_marginBottom="8dp" />
+
+                <ImageView
+                    android:id="@+id/imgTransaction"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:scaleType="centerCrop"
+                    android:adjustViewBounds="true"
+                    android:visibility="gone"
+                    android:background="#2E2545"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp" />
             </LinearLayout>
 
             <!-- Recurring Toggle -->
@@ -189,18 +230,18 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:layout_marginBottom="16dp"
                     android:background="#4B3F72"
+                    android:orientation="vertical"
                     android:padding="16dp">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:text="Frequency"
                         android:textColor="#FFFFFF"
-                        android:textSize="18sp"
-                        android:layout_marginBottom="8dp" />
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/tvFrequency"
@@ -215,18 +256,18 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:layout_marginBottom="16dp"
                     android:background="#4B3F72"
+                    android:orientation="vertical"
                     android:padding="16dp">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:text="Start Date"
                         android:textColor="#FFFFFF"
-                        android:textSize="18sp"
-                        android:layout_marginBottom="8dp" />
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/tvStartDate"
@@ -241,18 +282,18 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:layout_marginBottom="16dp"
                     android:background="#4B3F72"
+                    android:orientation="vertical"
                     android:padding="16dp">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:text="End Date"
                         android:textColor="#FFFFFF"
-                        android:textSize="18sp"
-                        android:layout_marginBottom="8dp" />
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/tvEndDate"

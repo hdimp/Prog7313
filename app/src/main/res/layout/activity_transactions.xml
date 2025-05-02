@@ -74,7 +74,7 @@
                 android:id="@+id/etAmount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Amount\nR 0.00"
+                android:hint="Amount (R)"
                 android:textColor="#FFFFFF"
                 android:textColorHint="#DAD1FF"
                 android:background="@drawable/input_background"

@@ -17,6 +17,10 @@ import androidx.core.view.WindowInsetsCompat
 
 class Recurring : AppCompatActivity() {
 
+    //--------------------------------------------
+    // UI components
+    //--------------------------------------------
+
     private lateinit var editStartDate: EditText
     private lateinit var editStartTime: EditText
     private lateinit var editEndDate: EditText
@@ -29,6 +33,10 @@ class Recurring : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_recurring)
 
+        //--------------------------------------------
+        // Binding UI elements
+        //--------------------------------------------
+
         editStartTime = findViewById(R.id.editStartTime)
         editStartDate = findViewById(R.id.editStartDate)
         editEndTime = findViewById(R.id.editEndTime)
@@ -36,7 +44,15 @@ class Recurring : AppCompatActivity() {
         recurrenceGroup = findViewById(R.id.recurrenceGroup)
         submitButton = findViewById(R.id.btnSubmitRecurring)
 
+        //--------------------------------------------
+        // Get calendar date
+        //--------------------------------------------
+
         val calendar = Calendar.getInstance()
+
+        //--------------------------------------------
+        // Date picker logic start date
+        //--------------------------------------------
 
         editStartDate.setOnClickListener {
             val datePicker = DatePickerDialog(
@@ -52,6 +68,10 @@ class Recurring : AppCompatActivity() {
             datePicker.show()
         }
 
+        //--------------------------------------------
+        // Timepicker logic start time
+        //--------------------------------------------
+
         editStartTime.setOnClickListener {
             val timePicker = TimePickerDialog(
                 this,
@@ -65,6 +85,10 @@ class Recurring : AppCompatActivity() {
             )
             timePicker.show()
         }
+
+        //--------------------------------------------
+        // Date picker logic end date
+        //--------------------------------------------
 
         editEndDate.setOnClickListener {
             val datePicker = DatePickerDialog(
@@ -80,6 +104,10 @@ class Recurring : AppCompatActivity() {
             datePicker.show()
         }
 
+        //--------------------------------------------
+        // Time picker logic for end time
+        //--------------------------------------------
+
         editEndTime.setOnClickListener {
             val timePicker = TimePickerDialog(
                 this,
@@ -93,6 +121,10 @@ class Recurring : AppCompatActivity() {
             )
             timePicker.show()
         }
+
+        //--------------------------------------------
+        // Submit button logic
+        //--------------------------------------------
 
         submitButton.setOnClickListener {
             val selectedRecurrence = findViewById<RadioButton>(recurrenceGroup.checkedRadioButtonId)
@@ -125,6 +157,10 @@ class Recurring : AppCompatActivity() {
             finish()
         }
     }
+
+    //--------------------------------------------
+    // Timestamp converter to UNIX
+    //--------------------------------------------
 
     private fun parseToTimestamp(date: String, time: String): Long? {
         return try {

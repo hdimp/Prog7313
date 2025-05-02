@@ -51,16 +51,6 @@
                 android:text="Home" />
 
             <TextView
-                android:id="@+id/settingPrivacy"
-                style="@style/SettingItem"
-                android:text="Privacy" />
-
-            <TextView
-                android:id="@+id/settingHelp"
-                style="@style/SettingItem"
-                android:text="Help" />
-
-            <TextView
                 android:id="@+id/settingCreateCategory"
                 style="@style/SettingItem"
                 android:text="Create Category" />
@@ -72,14 +62,15 @@
 
             <!-- Logout -->
             <TextView
+                android:id="@+id/tvLogout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingVertical="12dp"
-                android:paddingHorizontal="16dp"
-                android:text="Log out"
-                android:textColor="#FFFFFF"
+                android:layout_marginTop="10dp"
                 android:background="#6A5ACD"
-                android:layout_marginTop="10dp" />
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="12dp"
+                android:text="Log out"
+                android:textColor="#FFFFFF" />
         </LinearLayout>
 
     </LinearLayout>

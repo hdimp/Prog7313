@@ -3,6 +3,10 @@ package com.example.prog7313
 import androidx.room.Transaction
 import java.sql.Timestamp
 
+//--------------------------------------------
+// Database functions
+//--------------------------------------------
+
 class TransactionRepo(private val transactionDao: TransactionDao) {
 
     suspend fun insertTransaction(transactionData: TransactionData) {
@@ -34,17 +38,38 @@ class TransactionRepo(private val transactionDao: TransactionDao) {
         val (startOfDay, endOfDay) = getStartAndEndOfDay(selectedDateTimestamp)
         return transactionDao.getTransactionsForDate(startOfDay, endOfDay)
     }
+
+    suspend fun getTransactionById(transactionId: Long): TransactionData? {
+        return transactionDao.getTransactionById(transactionId)
+    }
+
+    suspend fun deleteTransactionById(transactionId: Long) {
+        transactionDao.deleteTransactionById(transactionId)
+    }
 }
+
+//--------------------------------------------
+// Function to get start and end of day
+// https://stackoverflow.com/questions/48647950/how-to-set-calendar-object-to-current-date-but-time-from-simpledateformat-that-c
+//--------------------------------------------
 
 private fun getStartAndEndOfDay(selectedDateTimestamp: Long): Pair<Long, Long> {
     val calendar = java.util.Calendar.getInstance()
     calendar.timeInMillis = selectedDateTimestamp
+
+    //--------------------------------------------
+    // Start of day
+    //--------------------------------------------
 
     calendar.set(java.util.Calendar.HOUR_OF_DAY, 0)
     calendar.set(java.util.Calendar.MINUTE, 0)
     calendar.set(java.util.Calendar.SECOND, 0)
     calendar.set(java.util.Calendar.MILLISECOND, 0)
     val startOfDay = calendar.timeInMillis
+
+    //--------------------------------------------
+    // End of day
+    //--------------------------------------------
 
     calendar.set(java.util.Calendar.HOUR_OF_DAY, 23)
     calendar.set(java.util.Calendar.MINUTE, 59)
@@ -55,10 +80,17 @@ private fun getStartAndEndOfDay(selectedDateTimestamp: Long): Pair<Long, Long> {
     return Pair(startOfDay, endOfDay)
 }
 
+//--------------------------------------------
+// Function to get start and end of month
+//--------------------------------------------
+
 private fun getStartAndEndOfCurrentMonth(): Pair<Long, Long> {
     val calendar = java.util.Calendar.getInstance()
 
+    //--------------------------------------------
     // Start of month
+    //--------------------------------------------
+
     calendar.set(java.util.Calendar.DAY_OF_MONTH, 1)
     calendar.set(java.util.Calendar.HOUR_OF_DAY, 0)
     calendar.set(java.util.Calendar.MINUTE, 0)
@@ -66,7 +98,10 @@ private fun getStartAndEndOfCurrentMonth(): Pair<Long, Long> {
     calendar.set(java.util.Calendar.MILLISECOND, 0)
     val startOfMonth = calendar.timeInMillis
 
+    //--------------------------------------------
     // End of month
+    //--------------------------------------------
+
     calendar.add(java.util.Calendar.MONTH, 1)
     calendar.set(java.util.Calendar.DAY_OF_MONTH, 1)
     calendar.add(java.util.Calendar.DATE, -1)

@@ -246,7 +246,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Expenses:"
+            android:text="Transactions:"
             android:textColor="#FFFFFF"
             android:layout_weight="1"
             android:textSize="16sp"
@@ -267,13 +267,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tvtransactionalItems"
+            <LinearLayout
+                android:id="@+id/categoryTotalsContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingVertical="6dp"
-                android:textColor="#FFFFFF"
-                android:textSize="14sp" />
+                android:orientation="vertical" />
+
         </LinearLayout>
     </ScrollView>
 

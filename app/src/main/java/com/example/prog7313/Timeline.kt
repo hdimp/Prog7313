@@ -4,6 +4,8 @@ import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
+import android.view.Gravity
+import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.CalendarView
 import android.widget.ImageView
@@ -14,6 +16,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.marginTop
+import androidx.core.view.setMargins
 import androidx.core.view.setPadding
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -24,6 +28,10 @@ import java.util.Calendar
 import java.util.Locale
 
 class Timeline : AppCompatActivity() {
+
+    //--------------------------------------------
+    // Viewmodel and UI elements
+    //--------------------------------------------
 
     private lateinit var transactionViewModel: TransactionViewModel
     private lateinit var calendarView: CalendarView
@@ -37,7 +45,15 @@ class Timeline : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_timeline)
 
+        //--------------------------------------------
+        // Bottom nav bar setup
+        //--------------------------------------------
+
         setupNavigation()
+
+        //--------------------------------------------
+        // Initialized database, dao, repo, factory and viewmodel
+        //--------------------------------------------
 
         val database = AppDatabase.getDatabase(applicationContext)
         val transactionDao = database.transactionDao()
@@ -45,11 +61,19 @@ class Timeline : AppCompatActivity() {
         val factory = TransactionViewModelFactory(repository)
         transactionViewModel = ViewModelProvider(this, factory)[TransactionViewModel::class.java]
 
+        //--------------------------------------------
+        // Binds for UI elements
+        //--------------------------------------------
+
         calendarView = findViewById(R.id.calendarView)
         selectedDateText = findViewById(R.id.selectedDateText)
         selectedDateValue = findViewById(R.id.selectedDateValue)
         selectedDateDisplayLayout = findViewById(R.id.selectedDateDisplayLayout)
         transactionsTextView = findViewById(R.id.transactionsTextView)
+
+        //--------------------------------------------
+        // Set date picker functionality
+        //--------------------------------------------
 
         calendarView.setOnDateChangeListener {_, year, month, dayOfMonth ->
             val selectedDate = Calendar.getInstance().apply {
@@ -63,7 +87,26 @@ class Timeline : AppCompatActivity() {
                 displayTransactions(transactions)
             })
         }
+
+        val today = Calendar.getInstance().apply {
+            set(Calendar.HOUR_OF_DAY, 0)
+            set(Calendar.MINUTE, 0)
+            set(Calendar.SECOND, 0)
+            set(Calendar.MILLISECOND, 0)
+        }.timeInMillis
+
+        selectedDateValue.text = SimpleDateFormat("dd MM yyyy", Locale.getDefault()).format(today)
+
+        calendarView.date = today
+
+        transactionViewModel.getTransactionsForDate(today).observe(this, Observer { transactions ->
+            displayTransactions(transactions)
+        })
     }
+
+    //--------------------------------------------
+    // Transactions diplsayed in list
+    //--------------------------------------------
 
     private fun displayTransactions(transactions: List<TransactionData>) {
         val container = findViewById<LinearLayout>(R.id.dateContentLayout)
@@ -79,47 +122,48 @@ class Timeline : AppCompatActivity() {
             return
         }
 
+        val inflater = LayoutInflater.from(this)
+
         transactions.forEach { transaction ->
-            val transactionText = "${transaction.transactionType}: R ${transaction.amount}"
-            val transactionTextView = TextView(this).apply {
-                text = transactionText
-                textSize = 16f
-                setTextColor(if (transaction.transactionType == "Expense") Color.RED else Color.GREEN)
+            val view = inflater.inflate(R.layout.item_user_transaction, container, false)
+
+            val ivIcon = view.findViewById<ImageView>(R.id.ivCategoryIcon)
+            val tvType = view.findViewById<TextView>(R.id.tvCustomName)
+            val tvAmount = view.findViewById<TextView>(R.id.tvTransactionAmount)
+            val tvDetails = view.findViewById<TextView>(R.id.tvViewDetails)
+
+            ivIcon.setImageResource(
+                if (transaction.transactionType == "Expense") R.drawable.ic_minus
+                else R.drawable.ic_plus
+            )
+
+            tvType.text = transaction.transactionType
+            tvAmount.text = "R ${transaction.amount}"
+            tvAmount.setTextColor(if (transaction.transactionType == "Expense") Color.RED else Color.GREEN)
+
+            tvDetails.setOnClickListener {
+                val intent = Intent(this, IndividualTransactions::class.java)
+                intent.putExtra("transactionId", transaction.id)
+                startActivity(intent)
             }
-            container.addView(transactionTextView)
 
-            transaction.imageUrl?.let { url ->
-                val imageLink = TextView(this).apply {
-                    text = "View Image"
-                    setTextColor(Color.BLUE)
-                    setOnClickListener {
-                        val imageUri = Uri.parse(url)
-
-                        val imageView = ImageView(this@Timeline).apply {
-                            setImageURI(imageUri)
-                        }
-
-                        val dialog = AlertDialog.Builder(this@Timeline)
-                            .setTitle("Transaction Image")
-                            .setView(imageView)
-                            .setPositiveButton("Close", null)
-                            .create()
-
-                        dialog.show()
-                    }
-                }
-
-                container.addView(imageLink)
-            }
+            container.addView(view)
         }
     }
 
+    //--------------------------------------------
+    // Bottom nav setup
+    //--------------------------------------------
+
     private fun setupNavigation() {
-        // Find navigation elements
+
         val navHome = findViewById<LinearLayout>(R.id.navHome)
         val navSettings = findViewById<LinearLayout>(R.id.navSettings)
 
-        // Set click listeners
+        //--------------------------------------------
+        // Click listeners for nav bar
+        //--------------------------------------------
+
         navHome.setOnClickListener {
             val intent = Intent(this, HomepageActivity::class.java)
             startActivity(intent)

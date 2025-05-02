@@ -10,16 +10,26 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //--------------------------------------------
+        // references for buttons
+        //--------------------------------------------
+
         val btnLogin = findViewById<Button>(R.id.btnLogin)
         val btnCreateAccount = findViewById<Button>(R.id.btnCreateAccount)
 
-        // Handle Login button click
+        //--------------------------------------------
+        // click listener for login button
+        //--------------------------------------------
+
         btnLogin.setOnClickListener {
             val intent = Intent(this, Login::class.java)  // Use Login::class.java, NOT LoginActivity
             startActivity(intent)
         }
 
-        // Handle Create Account button click
+        //--------------------------------------------
+        // click listener for create account
+        //--------------------------------------------
+
         btnCreateAccount.setOnClickListener {
             val intent = Intent(this, Register::class.java)  // Use Register::class.java, NOT RegisterActivity
             startActivity(intent)
