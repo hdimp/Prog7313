@@ -24,11 +24,23 @@ class CreateCategory : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_create_category)
 
+        //--------------------------------------------
+        //
+        //--------------------------------------------
+
         setupNavigation()
+
+        //--------------------------------------------
+        //
+        //--------------------------------------------
 
         val radioGroup = findViewById<RadioGroup>(R.id.radioGroup)
         val editCategoryName = findViewById<EditText>(R.id.editCategoryName)
         val btnCreateCategory = findViewById<Button>(R.id.btnCreateCategory)
+
+        //--------------------------------------------
+        //
+        //--------------------------------------------
 
         btnCreateCategory.setOnClickListener {
             val selectedId = radioGroup.checkedRadioButtonId
@@ -48,15 +60,33 @@ class CreateCategory : AppCompatActivity() {
                 Toast.makeText(this, "Enter a category name", Toast.LENGTH_SHORT).show()
             }
         }
+
+        val btnEditCategory = findViewById<Button>(R.id.btnEditCategories)
+
+        btnEditCategory.setOnClickListener {
+            val intent = Intent(this, EditCategories::class.java)
+            startActivity(intent)
+        }
     }
 
+    //--------------------------------------------
+    //
+    //--------------------------------------------
+
     private fun setupNavigation() {
-        // Find navigation elements
+
+        //--------------------------------------------
+        //
+        //--------------------------------------------
+
         val navHome = findViewById<LinearLayout>(R.id.navHome)
         val navTimeline = findViewById<LinearLayout>(R.id.navTimeline)
         val navSettings = findViewById<LinearLayout>(R.id.navSettings)
 
-        // Set click listeners
+        //--------------------------------------------
+        //
+        //--------------------------------------------
+
         navHome.setOnClickListener {
             val intent = Intent(this, HomepageActivity::class.java)
             startActivity(intent)

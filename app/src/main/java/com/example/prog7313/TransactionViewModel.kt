@@ -12,6 +12,10 @@ import java.sql.Timestamp
 
 class TransactionViewModel(private val repository: TransactionRepo) : ViewModel() {
 
+    //--------------------------------------------
+    //
+    //--------------------------------------------
+
     fun insertTransaction(transactionData: TransactionData) {
         CoroutineScope(Dispatchers.IO).launch {
             repository.insertTransaction(transactionData)
@@ -25,7 +29,21 @@ class TransactionViewModel(private val repository: TransactionRepo) : ViewModel(
     fun getTransactionsForDate(selectedDateTimestamp: Long) = liveData(Dispatchers.IO) {
         emit(repository.getTransactionsForDate(selectedDateTimestamp))
     }
+
+    fun getTransactionById(transactionId: Long) = liveData(Dispatchers.IO) {
+        emit(repository.getTransactionById(transactionId))
+    }
+
+    fun deleteTransactionById(transactionId: Long) {
+        CoroutineScope(Dispatchers.IO).launch {
+            repository.deleteTransactionById(transactionId)
+        }
+    }
 }
+
+//--------------------------------------------
+//
+//--------------------------------------------
 
 class TransactionViewModelFactory(private val repository: TransactionRepo) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

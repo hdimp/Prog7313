@@ -238,6 +238,13 @@
                         android:textColor="#FFFFFF"
                         android:textSize="16sp" />
                 </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/customExpenseCategoryContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+
             </LinearLayout>
 
             <!-- Income Categories (Initially Hidden) -->
@@ -322,6 +329,13 @@
                         android:textColor="#FFFFFF"
                         android:textSize="16sp" />
                 </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/customIncomeCategoryContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+
             </LinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

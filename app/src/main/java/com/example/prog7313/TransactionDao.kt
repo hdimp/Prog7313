@@ -8,6 +8,10 @@ import java.time.Month
 @Dao
 interface TransactionDao {
 
+    //--------------------------------------------
+    //
+    //--------------------------------------------
+
     @Insert
     suspend fun insertTransaction(transactionData: TransactionData)
 
@@ -25,4 +29,10 @@ interface TransactionDao {
 
     @Query("SELECT * FROM transactions WHERE timestamp >= :startDate AND timestamp <= :endDate")
     suspend fun getTransactionsForDate(startDate: Long, endDate: Long): List<TransactionData>
+
+    @Query("SELECT * FROM transactions WHERE id = :transactionId")
+    suspend fun getTransactionById(transactionId: Long): TransactionData?
+
+    @Query("DELETE FROM transactions WHERE id = :transactionId")
+    suspend fun deleteTransactionById(transactionId: Long)
 }

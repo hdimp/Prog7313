@@ -7,5 +7,4 @@ import androidx.room.Query
 
 @Dao
 interface BudgetDao {
-
 }

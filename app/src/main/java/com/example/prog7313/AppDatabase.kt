@@ -4,16 +4,29 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
+
+//--------------------------------------------
+//
+//--------------------------------------------
+
 @Database(entities = [
     User::class,
     TransactionData::class,
     UserCategoryData::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
+    //--------------------------------------------
+    //
+    //--------------------------------------------
+
     abstract fun userDao(): UserDao
     abstract fun transactionDao(): TransactionDao
     abstract fun budgetDao(): BudgetDao
     abstract fun userCategoryDao(): UserCategoryDao
+
+    //--------------------------------------------
+    //
+    //--------------------------------------------
 
     companion object {
         @Volatile

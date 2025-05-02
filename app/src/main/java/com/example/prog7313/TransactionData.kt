@@ -3,6 +3,10 @@ package com.example.prog7313
 import androidx.room.PrimaryKey
 import androidx.room.Entity
 
+//--------------------------------------------
+//
+//--------------------------------------------
+
 @Entity(tableName = "transactions")
 data class TransactionData (
     @PrimaryKey(autoGenerate = true)

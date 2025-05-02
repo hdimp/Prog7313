@@ -10,22 +10,38 @@ import androidx.lifecycle.ViewModelProvider
 
 class Register : AppCompatActivity() {
 
+    //--------------------------------------------
+    //
+    //--------------------------------------------
+
     private lateinit var userViewModel: UserViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
+        //--------------------------------------------
+        //
+        //--------------------------------------------
+
         val database = AppDatabase.getDatabase(this)
         val userDao = database.userDao()
         val repository = UserRepository(userDao)
         userViewModel = ViewModelProvider(this, UserViewModelFactory(repository)).get(UserViewModel::class.java)
+
+        //--------------------------------------------
+        //
+        //--------------------------------------------
 
         val editTextFullName = findViewById<EditText>(R.id.txtFullName)
         val editTextUsername = findViewById<EditText>(R.id.txtUsername)
         val editTextPassword = findViewById<EditText>(R.id.txtregPassword)
         val editTextConfirmPassword =  findViewById<EditText>(R.id.txtConfirm)
         val buttonSubmit = findViewById<Button>(R.id.btnCreate)
+
+        //--------------------------------------------
+        //
+        //--------------------------------------------
 
         buttonSubmit.setOnClickListener {
             val fullName = editTextFullName.text.toString().trim()

@@ -10,9 +10,15 @@ import kotlin.math.exp
 
 class HomePageViewModel(application: Application) : AndroidViewModel(application) {
 
+    //--------------------------------------------
+    //
+    //--------------------------------------------
+
     private val repo: TransactionRepo = TransactionRepo(AppDatabase.getDatabase(application).transactionDao())
 
-    // Income and Expenses
+    //--------------------------------------------
+    //
+    //--------------------------------------------
 
     private val _balanceLiveData = MutableLiveData<Double>()
     val balanceLiveData: LiveData<Double> get() = _balanceLiveData
@@ -23,7 +29,9 @@ class HomePageViewModel(application: Application) : AndroidViewModel(application
     private val _totalExpenses = MutableLiveData<Double>()
     val totalExpenses: LiveData<Double> get() = _totalExpenses
 
-    // Budget
+    //--------------------------------------------
+    //
+    //--------------------------------------------
 
     private val _monthlyExpenseLiveData = MutableLiveData<Double>()
     val monthlyExpenseLiveData: LiveData<Double> get() = _monthlyExpenseLiveData
@@ -37,7 +45,9 @@ class HomePageViewModel(application: Application) : AndroidViewModel(application
     private val _progressPercent = MutableLiveData<Int>()
     val progressPercent: LiveData<Int> get() = _progressPercent
 
-    // Balance calculate
+    //--------------------------------------------
+    //
+    //--------------------------------------------
 
     fun calculateBalance() {
         viewModelScope.launch {
@@ -52,21 +62,27 @@ class HomePageViewModel(application: Application) : AndroidViewModel(application
         }
     }
 
-    // Progress bar / budget
+    //--------------------------------------------
+    //
+    //--------------------------------------------
 
     fun loadMonthlyExpense() {
-        viewModelScope.launch {
             viewModelScope.launch {
                 val expense = repo.getMonthlyExpense()
                 _monthlyExpenseLiveData.postValue(expense)
+
                 updateProgressBar()
             }
-        }
     }
 
     private fun updateProgressBar() {
-        val max = _maxGoal.value ?: return
-        val expense = _monthlyExpenseLiveData.value ?: return
+        val max = _maxGoal.value
+        val expense = _totalExpenses.value
+
+        if (max == null || expense == null) {
+            _progressPercent.postValue(0)
+            return
+        }
 
         val percent = if (max > 0) {
             ((expense / max) * 100).coerceAtMost(100.0)

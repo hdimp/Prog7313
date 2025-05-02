@@ -23,16 +23,32 @@ import java.util.Locale
 
 class Transactions : AppCompatActivity() {
 
+    //--------------------------------------------
+    //
+    //--------------------------------------------
+
     private lateinit var transactionViewModel: TransactionViewModel
     private lateinit var textViewSelectCategory: TextView
     private var selectedCategory: String = ""
 
+    //--------------------------------------------
+    //
+    //--------------------------------------------
+
     private lateinit var uploadPhotoButton: TextView
     private var selectedImageUri: Uri? = null
+
+    //--------------------------------------------
+    //
+    //--------------------------------------------
 
     private var selectedFrequency: String? = null
     private var startTimestamp: Long? = null
     private var endTimestamp: Long? = null
+
+    //--------------------------------------------
+    //
+    //--------------------------------------------
 
     private val recurringActivityLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -44,6 +60,10 @@ class Transactions : AppCompatActivity() {
             endTimestamp = data?.getLongExtra("endTimestamp", -1L)?.takeIf { it > 0}
         }
     }
+
+    //--------------------------------------------
+    //
+    //--------------------------------------------
 
     private val categoryActivityLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -57,6 +77,10 @@ class Transactions : AppCompatActivity() {
             }
         }
     }
+
+    //--------------------------------------------
+    //
+    //--------------------------------------------
 
     private  val photoActivityLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -73,12 +97,24 @@ class Transactions : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_transactions)
 
+        //--------------------------------------------
+        //
+        //--------------------------------------------
+
         setupNavigation()
+
+        //--------------------------------------------
+        //
+        //--------------------------------------------
 
         val database = AppDatabase.getDatabase(this)
         val transactionDao = database.transactionDao()
         val repository = TransactionRepo(transactionDao)
         transactionViewModel = ViewModelProvider(this, TransactionViewModelFactory(repository)).get(TransactionViewModel::class.java)
+
+        //--------------------------------------------
+        //
+        //--------------------------------------------
 
         val radioGroupTransactionType = findViewById<RadioGroup>(R.id.transactionTypeGroup)
         val radioIncome = findViewById<RadioButton>(R.id.rbIncome)
@@ -86,6 +122,10 @@ class Transactions : AppCompatActivity() {
         val editTextAmount = findViewById<EditText>(R.id.etAmount)
         val editTextNotes = findViewById<EditText>(R.id.etNotes)
         val buttonSubmit = findViewById<Button>(R.id.btnSubmit)
+
+        //--------------------------------------------
+        //
+        //--------------------------------------------
 
         textViewSelectCategory = findViewById(R.id.tvSelectCategory)
 
@@ -104,12 +144,20 @@ class Transactions : AppCompatActivity() {
             categoryActivityLauncher.launch(intent)
         }
 
+        //--------------------------------------------
+        //
+        //--------------------------------------------
+
         uploadPhotoButton = findViewById(R.id.tvUploadPhoto)
 
         uploadPhotoButton.setOnClickListener {
             val intent = Intent(this, UploadPhoto::class.java)
             photoActivityLauncher.launch(intent)
         }
+
+        //--------------------------------------------
+        //
+        //--------------------------------------------
 
         val tvRecurring = findViewById<TextView>(R.id.tvRecurring)
         var isRecurring = false
@@ -129,6 +177,10 @@ class Transactions : AppCompatActivity() {
                 endTimestamp = null
             }
         }
+
+        //--------------------------------------------
+        //
+        //--------------------------------------------
 
         buttonSubmit.setOnClickListener {
             val transactionType = when {
@@ -166,6 +218,11 @@ class Transactions : AppCompatActivity() {
 
                     editTextAmount.text.clear()
                     editTextNotes.text.clear()
+
+                    val intent = Intent(this, HomepageActivity::class.java)
+                    startActivity(intent)
+                    finish()
+
                 } else {
                     Toast.makeText(this, "Please enter a valid amount!", Toast.LENGTH_SHORT).show()
                 }
@@ -175,13 +232,24 @@ class Transactions : AppCompatActivity() {
         }
     }
 
+    //--------------------------------------------
+    //
+    //--------------------------------------------
+
     private fun setupNavigation() {
-        // Find navigation elements
+
+        //--------------------------------------------
+        //
+        //--------------------------------------------
+
         val navHome = findViewById<LinearLayout>(R.id.navHome)
         val navTimeline = findViewById<LinearLayout>(R.id.navTimeline)
         val navSettings = findViewById<LinearLayout>(R.id.navSettings)
 
-        // Set click listeners
+        //--------------------------------------------
+        //
+        //--------------------------------------------
+
         navHome.setOnClickListener {
             val intent = Intent(this, HomepageActivity::class.java)
             startActivity(intent)
