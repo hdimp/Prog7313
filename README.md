@@ -8,7 +8,6 @@ Android SDK Directory
 Make sure your local `local.properties` file includes the correct Android SDK path:
 "sdk.dir=C\:\\Users\\user\\AppData\\Local\\Android\\Sdk"
 user = your computer username
-Make sure you have the latest version of Android Studio and use VanillaIceCream when running the app.
 
 --------------------------------------
 GitHub Repository
@@ -25,13 +24,18 @@ Watch the demo of the working application here:
 --------------------------------------
 WinRAR
 --------------------------------------
-1. Please use WinRar instead of zip.
-2. When you download the zip as winrar double-click the folder and copy the folder into your desktop.
+1. Please use WinRAR instead of Windows Zip
+2. Please use this link if you need to download WinRAR: https://www.win-rar.com/predownload.html?&L=0.
+3. Then follow the prompts to install it.
+4. After that, you can then download the zip file from the GitHub repository, make sure use have WinRAR downloaded as Windows Zip is currently not working.
+5. You must double-click the WinRAR file of the repository and copy and paste the folder that is found in that WinRAR onto your desktop.
+
+![Winrar](https://github.com/user-attachments/assets/487e1b2c-a3f6-4ec5-9cbd-57d2a41e34a8)
 
 --------------------------------------
 How to Import from GitHub
 --------------------------------------
-1. Clone the repository using github desktop.
+1. Clone the repository using GitHub Desktop.
 2. Open Android Studio.
 3. Select File > Open and navigate to the cloned project directory.
 4. Sync Gradle and let dependencies load.
@@ -41,8 +45,9 @@ How to Import from GitHub
 How to Start the Application
 --------------------------------------
 1. Make sure you have an Android emulator or a physical device connected.
-2. In Android Studio, click Run > Run 'app' or press Shift + F10.
-3. The app should install and launch on your selected device.
+2. Make sure you have the latest version of Android Studio and that you are using VanillaIceCream when running the app
+3. In Android Studio, click Run > Run 'app' or press Shift + F10.
+4. The app should install and launch on your selected device.
 
 --------------------------------------
 App Screenshots
@@ -114,7 +119,8 @@ References
 - mike-gallego (2018). *Struggling with context inflating a RecyclerView list item*. Stack Overflow. [Link](https://stackoverflow.com/questions/52224165/struggling-with-context-inflating-a-recyclerview-list-item)  
 - Ong, A. (2022). *Why my recyclerView show Unresolved reference: recyclerView*. Stack Overflow. [Link](https://stackoverflow.com/questions/71604788/why-my-recyclerview-show-unresolved-reference-recyclerview)  
 - reibuehl (2018). *How to set Calendar object to current date but time from SimpleDateFormat that contains HH:mm:ss*. Stack Overflow. [Link](https://stackoverflow.com/questions/48647950/how-to-set-calendar-object-to-current-date-but-time-from-simpledateformat-that-c)
-- ChatGpt https://chatgpt.com
+- reibuehl (2018). *How to set Calendar object to current date but time from SimpleDateFormat that contains HH:mm:ss*. Stack Overflow. [Link](https://stackoverflow.com/questions/48647950/how-to-set-calendar-object-to-current-date-but-time-from-simpledateformat-that-c)
+- ChatGpt (2025). *How to fix the nav bar and assist with bug fixes*. [Link](https://chatgpt.com)
 
 --------------------------------------
 Developed With
