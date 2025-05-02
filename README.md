@@ -107,6 +107,7 @@ References
 - mike-gallego (2018). *Struggling with context inflating a RecyclerView list item*. Stack Overflow. [Link](https://stackoverflow.com/questions/52224165/struggling-with-context-inflating-a-recyclerview-list-item)  
 - Ong, A. (2022). *Why my recyclerView show Unresolved reference: recyclerView*. Stack Overflow. [Link](https://stackoverflow.com/questions/71604788/why-my-recyclerview-show-unresolved-reference-recyclerview)  
 - reibuehl (2018). *How to set Calendar object to current date but time from SimpleDateFormat that contains HH:mm:ss*. Stack Overflow. [Link](https://stackoverflow.com/questions/48647950/how-to-set-calendar-object-to-current-date-but-time-from-simpledateformat-that-c)
+- ChatGpt https://chatgpt.com
 
 --------------------------------------
 Developed With
