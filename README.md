@@ -13,7 +13,7 @@ user = your computer username
 GitHub Repository
 --------------------------------------
 Access the full source code here:  
-👉 [https://github.com/hdimp/Prog7313.git]
+👉 [https://github.com/hdimp/Muhammad-Rahim_Shaun-Faulkner_Natheem-Scott_Prog7313_POE-PART-2]
 
 --------------------------------------
 YouTube Demo
