@@ -6,11 +6,12 @@ import org.junit.Test
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import kotlinx.coroutines.runBlocking
+import org.mockito.kotlin.*
 
 class UserViewModelTest {
 
     @get:Rule
-    var instantTaskExcutorRule = InstantTaskExecutorRule()
+    var instantTaskExecutorRule = InstantTaskExecutorRule()
 
     private lateinit var viewModel: UserViewModel
     private lateinit var repository: UserRepository
@@ -18,7 +19,7 @@ class UserViewModelTest {
     @Before
     fun setUp() {
 
-        repository = mock(UserRepository::class.java)
+        repository = mock()
 
         viewModel = UserViewModel(repository)
     }
@@ -38,9 +39,9 @@ class UserViewModelTest {
 
         val user = User(fullName = "John Doe", username = "jdoe", password = "password")
 
-        `when`(repository.getUserByUsername("jdoe")).thenReturn(user)
+        whenever(repository.getUserByUsername("jdoe")).thenReturn(user)
 
-        val observer = mock(Observer::class.java) as Observer<User>
+        val observer = mock<Observer<User?>>()
         viewModel.getUserByUsername("jdoe").observeForever(observer)
 
         verify(observer).onChanged(user)
