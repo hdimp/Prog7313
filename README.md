@@ -41,51 +41,63 @@ How to Start the Application
 App Screenshots
 --------------------------------------
 
-CreateCategory
+**CreateCategory**
+
 ![CreateCategory](https://github.com/user-attachments/assets/2c639cd0-f98d-48ef-a9c2-653bc4f321ce)
 
 
-EditCategory
+**EditCategory**
+
 ![EditCategory](https://github.com/user-attachments/assets/a25c25bb-7805-48f3-81f1-371c1f026f87)
 
 
-Expenses
+**Expenses**
+
 ![Expenses](https://github.com/user-attachments/assets/a43c9db9-5651-40af-8736-8230cf8dfff1)
 
 
-HomePage
+**HomePage**
+
 ![HomePage](https://github.com/user-attachments/assets/1ce14ef9-4174-4fe0-87d6-75df9eb1a317)
 
 
-Incomes
+**Incomes**
+
 ![Incomes](https://github.com/user-attachments/assets/29ef9298-8631-486b-b35a-d7527b09e4f7)
 
 
-Login
+**Login**
+
 ![Login](https://github.com/user-attachments/assets/cc7638c5-39cd-4778-b9d9-72df760686e8)
 
 
-Recurring
+**Recurring**
+
 ![Recurring](https://github.com/user-attachments/assets/03991d43-b0d0-407b-a87e-ebd36c202690)
 
 
-Timeline
+**Timeline**
+
 ![Timeline](https://github.com/user-attachments/assets/4e32c8a7-1eca-4883-8dc4-668172ae68d1)
 
 
-TransactionDetailsNoRecurring
+**TransactionDetailsNoRecurring**
+
 ![TransactionDetailsNoRecur](https://github.com/user-attachments/assets/a874f471-f525-4b2c-94c9-9243ca5d16fd)
 
 
-Transaction
+**Transaction**
+
 ![Transactions](https://github.com/user-attachments/assets/8effa26f-a659-4101-afa5-2cbabe9e6ceb)
 
 
-TransactionDetailsRecurring
+**TransactionDetailsRecurring**
+
 ![TrasactionDetailsRecur](https://github.com/user-attachments/assets/4b7c44d7-d4e9-4a7f-8ac7-9d82840a4ee9)
 
 
-Upload
+**Upload**
+
 ![Upload](https://github.com/user-attachments/assets/5f5ea4a2-2093-4a7a-aca2-97877bc32efb)
 
 --------------------------------------
